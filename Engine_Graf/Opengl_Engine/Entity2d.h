@@ -10,33 +10,33 @@
 #include "Texture.h"
 #include "ShaderType.h"
 
-	class Entity2d : public Entity
-	{
+class Entity2d : public Entity
+{
 
-	protected:
+protected:
 
-		VertexArray* _va;
-		VertexBuffer* _vb;
-		VertexBufferLayout layout;
-		IndexBuffer* _ib;
-		Shader* shader;		
+	VertexArray* _va;
+	VertexBuffer* _vb;
+	VertexBufferLayout layout;
+	IndexBuffer* _ib;
+	Shader* shader;		
 
-		ShaderType shaderType;
+	ShaderType shaderType;
 
-		glm::vec3 vertices[4];
+	glm::vec3 vertices[4];
 
-		DllExport virtual void  setVertices() = 0;
-		DllExport virtual void  setIndixs() = 0;
+	DllExport virtual void  setVertices() = 0;
+	DllExport virtual void  setIndixs() = 0;
 
-	public:
+public:
 
-		DllExport Entity2d(int initPositionX, int initPositionY);
-		DllExport ~Entity2d();
+	DllExport Entity2d(int initPositionX, int initPositionY);
+	DllExport ~Entity2d();
 
-		DllExport glm::vec3* getVertices();
+	DllExport glm::vec3* getVertices();
 
-		DllExport void draw();
-		DllExport virtual void calculateVertices() = 0;
-	};
+	DllExport void draw();
+	DllExport virtual void calculateVertices() = 0;
+};
 
 #endif
