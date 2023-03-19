@@ -3,34 +3,36 @@
 
 #include "GL/glew.h"
 #include "glfw3.h"
-
 #include "DDLExport.h"
-
 #include "Renderer.h"
 #include "window.h"
 #include "Timer.h"
 #include "ImGuiEngine.h"
 
-	class BaseGame
-	{
+class BaseGame
+{
 
-	private:
+private:
 
-		Window* window;
-		Renderer* renderer;
+	Window* window;
+	Renderer* renderer;
+	ImGuiEngine* imGuiEngine;
+	Timer* timer;
 
-	public:
+protected:
+	
+	DllExport BaseGame();
+	DllExport ~BaseGame();
 
-		DllExport BaseGame();
-		DllExport ~BaseGame();
-		DllExport void run();
+public:
+	
+	DllExport void run();
 
-
-		DllExport virtual void Init() = 0;
-		DllExport virtual void Update() = 0;
-		DllExport virtual void DeInit() = 0;
-	};
-
-
+	DllExport virtual void init() = 0;
+	DllExport virtual void input() = 0;
+	DllExport virtual void update() = 0;
+	DllExport virtual void draw() = 0;
+	DllExport virtual void deinit() = 0;
+};
 
 #endif

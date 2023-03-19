@@ -1,18 +1,14 @@
 #pragma once
 
 #include "Entity2d.h"
-#include "Animaiton.h"
 #include <vector>
 
 class Sprite : public Entity2d
 {
 
-
 private:
-	Texture* textura;
 
-	Animation* animation;
-	std::vector<Frame> frames;
+	Texture* textura;	
 
 	int width, height;
 	unsigned int indices[6];
@@ -32,14 +28,7 @@ public:
 	DllExport Sprite();
 	DllExport ~Sprite();
 
-	DllExport void setTexture(std::string imageName);
-	
-	DllExport void CreateAnimation(int x, int y, int speed, int framesAmountX, int framesAmountY);
-	DllExport void CreateAnimation(int x, int y, int speed, int framesAmountX, int framesAmountY, int framesLength);
-	DllExport void updateAnimation(float durationInSecs);
+	DllExport void setTexture(std::string imageName);	
 	
 	DllExport void drawTexture();
-
-
 };
-

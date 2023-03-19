@@ -10,20 +10,15 @@
 #include "Texture.h"
 #include "ShaderType.h"
 
-	class Shape : public Entity2d
-	{
+class Shape : public Entity2d
+{
 
-	protected:
+public:
 
-
-	public:
-
-			DllExport Shape(int initPositionX, int initPositionY);
- 			DllExport ~Shape();
+		DllExport Shape(int initPositionX, int initPositionY);
+		DllExport ~Shape();
 
 		//Tiene Agregar un Material (Una funcion tiene que pedirlo por parametro)
-	};
-
+};
 
 #endif
-

@@ -1,49 +1,46 @@
-#include "baseGame.h" 
-
-#include "ImGuiEngine.h"
+#include "baseGame.h"
 
 DllExport BaseGame::BaseGame()
 {
-
+	window = NULL;
+	renderer = NULL;
+	imGuiEngine = NULL;
+	timer = NULL;
 }
 
 DllExport BaseGame::~BaseGame()
 {
-
+	if (window != NULL) { delete window; }
+	if (renderer != NULL) { delete renderer; }
+	if (imGuiEngine != NULL) { delete imGuiEngine; }
+	if (timer != NULL) { delete timer; }
 }
 
 DllExport void BaseGame::run()
 {
-	Window* window = Window::getWindow();
-	Renderer* renderer = Renderer::getRenderer();
-	ImGuiEngine* imGuiEngine = ImGuiEngine::getImGuiEngine();
-	Timer* timer = Timer::getTimer();
+	window = Window::getWindow();
+	renderer = Renderer::getRenderer();
+	imGuiEngine = ImGuiEngine::getImGuiEngine();
+	timer = Timer::getTimer();
 
-	Init();
+	init();
 
 	while (window->getWindowsShouldClose())
 	{
 		renderer->Clear();
 		timer->updateDeltaTime();
-		imGuiEngine->imGuiStartDraw();
+		imGuiEngine->imGuiStartDraw();	
 
-		Update();
+		input();
+
+		update();
+
+		draw();
 
 		imGuiEngine->imGuiEndDraw();
 		glfwSwapBuffers(window->getNativeWindow());
 		glfwPollEvents();
 	}
 
-	DeInit();
-
-	delete imGuiEngine;
-
-	delete window;
-
-	delete renderer;
-
-	//return 0;
+	deinit();	
 }
-
-
-

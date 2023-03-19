@@ -21,9 +21,11 @@ Sprite::Sprite(std::string imageName, int initPositionX, int initPositionY) : En
 	shader = new Shader(shaderType);
 	shader->Bind();
 
-	texture = new Texture("res/textures/" + imageName);
+	/*texture = new Texture("res/textures/" + imageName);
 	texture->Bind();
-	shader->SetUniforms1i("u_Texture", 0);
+	shader->SetUniforms1i("u_Texture", 0);*/
+
+	setTexture(imageName);
 
 	va->Unbind();
 	vb->UnBind();
@@ -57,12 +59,11 @@ Sprite::Sprite() : Entity2d(0, 0)
 	va->Unbind();
 	vb->UnBind();
 	ib->UnBind();
-
 }
 
 Sprite::~Sprite()
 {
-	delete animation;
+	
 }
 
 void Sprite::setTexture(std::string imageName)
@@ -98,7 +99,6 @@ void Sprite::setVertices()
 	positions[11] = 1.0f;
 	positions[14] = 0.0f;
 	positions[15] = 1.0f;
-
 }
 
 void Sprite::setVerticesSpriteSheet()
@@ -121,7 +121,6 @@ void Sprite::setVerticesSpriteSheet()
 	positions[11] = 1.0f;
 	positions[14] = 0.0f;
 	positions[15] = 1.0f;
-
 }
 
 void Sprite::setIndixs()
@@ -136,7 +135,6 @@ void Sprite::setIndixs()
 
 void Sprite::calculateVertices()
 {
-
 	int scaleX = getScaleX();
 	int scaleY = getScaleY();
 
@@ -144,68 +142,15 @@ void Sprite::calculateVertices()
 	vertices[1] = getPosition() + (glm::vec3(1.0f * scaleX * width / 2, 0.0f, 0.0f)) + (glm::vec3(0.0f, 1.0f * scaleY * height / 2, 0.0f));
 	vertices[2] = getPosition() + (glm::vec3(1.0f * scaleX * width / 2, 0.0f, 0.0f)) + (-glm::vec3(0.0f, 1.0f * scaleY * height / 2, 0.0f));
 	vertices[3] = getPosition() + (-glm::vec3(1.0f * scaleX * width / 2, 0.0f, 0.0f)) + (-glm::vec3(0.0f, 1.0f * scaleY * height / 2, 0.0f));
-
 }
-
-void Sprite::CreateAnimation(int x, int y, int speed, int framesAmountX, int framesAmountY)
-{
-	animation = new Animation();
-
-	float frameWidth = texture->GetWidth() / framesAmountX;
-	float frameHeight = texture->GetHeight() / framesAmountY;
-
-	animation->addFrame(x * frameWidth, y * frameHeight, frameWidth, frameHeight, texture->GetWidth(), texture->GetHeight(), speed, framesAmountX);
-}
-
-DllExport void Sprite::CreateAnimation(int x, int y, int speed, int framesAmountX, int framesAmountY, int framesLength)
-{
-	animation = new Animation();
-
-	float frameWidth = texture->GetWidth() / framesAmountX;
-	float frameHeight = texture->GetHeight() / framesAmountY;
-
-	//animation->addFrame(x * frameWidth, y * frameHeight, frameWidth, frameHeight, texture->GetWidth(), texture->GetHeight(), speed, framesAmountX);
-
-	for (int i = 0; i < framesLength; i++)
-	{
-		animation->addFrame(
-			(x + i) * frameWidth, 
-			y * frameHeight,
-			frameWidth,
-			frameHeight,
-			texture->GetWidth(),
-			texture->GetHeight(),
-			speed);
-	}
-}
-
-void Sprite::updateAnimation(float durationInSecs)
-{
-	frames = animation->getFrames();
-
-	positions[2] = frames[animation->getCurrentIndex()].uvCoords[0].u;
-	positions[3] = frames[animation->getCurrentIndex()].uvCoords[0].v;
-
-	positions[6] = frames[animation->getCurrentIndex()].uvCoords[1].u;
-	positions[7] = frames[animation->getCurrentIndex()].uvCoords[1].v;
-
-	positions[10] = frames[animation->getCurrentIndex()].uvCoords[3].u;
-	positions[11] = frames[animation->getCurrentIndex()].uvCoords[3].v;
-
-	positions[14] = frames[animation->getCurrentIndex()].uvCoords[2].u;
-	positions[15] = frames[animation->getCurrentIndex()].uvCoords[2].v;
-
-	animation->UpdateAnimation(durationInSecs);
-
-	vb->updateVertexBufferData(positions, 4 * 4 * sizeof(float));
-}
-
 
 DllExport void Sprite::drawTexture()
 {
-	textura->Bind();
+	/*textura->Bind();
 	draw();
-	textura->UnBind();
+	textura->UnBind();*/
+
+	texture->Bind();
+	draw();
+	texture->UnBind();
 }
-
-

@@ -39,8 +39,6 @@
 
 		DllExport void draw();
 		DllExport virtual void calculateVertices() = 0;
-
 	};
-
 
 #endif
