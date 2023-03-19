@@ -11,8 +11,7 @@ class Game : public BaseGame
 
 private:
 		
-	Entity2d* _sprite;
-	//Entity2d* _rectangleShape;
+	Entity2d* _sprite;	
 
 public:
 

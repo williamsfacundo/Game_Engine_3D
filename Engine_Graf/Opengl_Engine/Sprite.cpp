@@ -72,7 +72,7 @@ void Sprite::setTexture(std::string imageName)
 		_texture = new Texture("res/textures/" + imageName);
 	}
 
-	_texture->Bind(0);
+	_texture->Bind();
 	
 	shader->Bind();
 
