@@ -5,15 +5,15 @@ DllExport TriangleShape::TriangleShape(glm::vec4 RGBA, int initPositionX, int in
 	setVertices();
 	setIndixs();
 
-	va = new VertexArray();
-	vb = new VertexBuffer(positions, 4 * 4 * sizeof(float));
+	_va = new VertexArray();
+	_vb = new VertexBuffer(positions, 4 * 4 * sizeof(float));
 
 	layout = VertexBufferLayout();
 	layout.Push<float>(2);		 //Video: Buffer Layout Abstraction in OpenGL - min 27.30 Explica mas cosas qe se pueden hacer
-	va->AddBuffer(*vb, layout);
-	va->Bind();
+	_va->AddBuffer(*_vb, layout);
+	_va->Bind();
 
-	ib = new IndexBuffer(indices, 3);
+	_ib = new IndexBuffer(indices, 3);
 
 	shaderType = ShaderType::noTexture;
 
@@ -26,9 +26,9 @@ DllExport TriangleShape::TriangleShape(glm::vec4 RGBA, int initPositionX, int in
 	//shader->SetUniforms1i("u_Texture", 0);
 
 
-	va->Unbind();
-	vb->UnBind();
-	ib->UnBind();
+	_va->Unbind();
+	_vb->UnBind();
+	_ib->UnBind();
 	shader->Unbind();
 }
 

@@ -15,16 +15,15 @@
 
 	protected:
 
-		VertexArray* va;
-		VertexBuffer* vb;
+		VertexArray* _va;
+		VertexBuffer* _vb;
 		VertexBufferLayout layout;
-		IndexBuffer* ib;
+		IndexBuffer* _ib;
 		Shader* shader;		
 
 		ShaderType shaderType;
 
 		glm::vec3 vertices[4];
-
 
 		DllExport virtual void  setVertices() = 0;
 		DllExport virtual void  setIndixs() = 0;

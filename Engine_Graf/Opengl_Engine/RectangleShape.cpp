@@ -6,15 +6,15 @@ DllExport RectangleShape::RectangleShape(int initPositionX, int initPositionY) :
 	setIndixs();
 	calculateVertices();
 
-	va = new VertexArray();
-	vb = new VertexBuffer(positions, 4 * 4 * sizeof(float));
+	_va = new VertexArray();
+	_vb = new VertexBuffer(positions, 4 * 4 * sizeof(float));
 
 	layout = VertexBufferLayout();
 	layout.Push<float>(2);		 //Video: Buffer Layout Abstraction in OpenGL - min 27.30 Explica mas cosas qe se pueden hacer
-	va->AddBuffer(*vb, layout);
-	va->Bind();
+	_va->AddBuffer(*_vb, layout);
+	_va->Bind();
 
-	ib = new IndexBuffer(indices, 6);
+	_ib = new IndexBuffer(indices, 6);
 
 	shaderType = ShaderType::noTexture;
 
@@ -22,9 +22,9 @@ DllExport RectangleShape::RectangleShape(int initPositionX, int initPositionY) :
 	shader->Bind();
 	shader->SetUniforms4f("u_Color", 1.0f, 1.0f, 1.0f, 1.0f);
 
-	va->Unbind();
-	vb->UnBind();
-	ib->UnBind();
+	_va->Unbind();
+	_vb->UnBind();
+	_ib->UnBind();
 	shader->Unbind();
 }
 

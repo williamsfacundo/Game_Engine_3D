@@ -18,14 +18,17 @@ private:
 	DllExport void setVertices();	
 	DllExport void setIndixs();	
 	DllExport void calculateVertices();
+
+	DllExport void initSprite();
+
 protected:
 
 	float positions[16];
 
 public:
 
-	DllExport Sprite(std::string imageName, int initPositionX, int initPositionY);
 	DllExport Sprite();
+	DllExport Sprite(std::string imageName, int initPositionX, int initPositionY);
 	DllExport ~Sprite();
 
 	DllExport void setTexture(std::string imageName);	

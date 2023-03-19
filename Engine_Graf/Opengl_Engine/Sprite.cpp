@@ -1,84 +1,20 @@
 #include "Sprite.h"
 
-Sprite::Sprite(std::string imageName, int initPositionX, int initPositionY) : Entity2d(initPositionX, initPositionY)
-{
-	setVertices();
-	setIndixs();
-
-	va = new VertexArray();
-	vb = new VertexBuffer(positions, 4 * 4 * sizeof(float));
-
-	layout = VertexBufferLayout();
-	layout.Push<float>(2);		 //Video: Buffer Layout Abstraction in OpenGL - min 27.30 Explica mas cosas qe se pueden hacer
-	layout.Push<float>(2);
-	
-	va->AddBuffer(*vb, layout);
-	va->Bind();
-
-	ib = new IndexBuffer(indices, 6);
-
-	shaderType = ShaderType::whithTexture;
-
-	shader = new Shader(shaderType);	
-
-	setTexture(imageName);
-
-	va->Unbind();
-	vb->UnBind();
-	ib->UnBind();
-	shader->Unbind();	
-}
-
 Sprite::Sprite() : Entity2d(0, 0)
 {
-	setVertices();
-	setIndixs();
+	initSprite();
+}
 
-	va = new VertexArray();
-	vb = new VertexBuffer(positions, 4 * 4 * sizeof(float));
+Sprite::Sprite(std::string imageName, int initPositionX, int initPositionY) : Entity2d(initPositionX, initPositionY)
+{	
+	initSprite();
 
-	layout = VertexBufferLayout();
-	layout.Push<float>(2);		 //Video: Buffer Layout Abstraction in OpenGL - min 27.30 Explica mas cosas qe se pueden hacer
-	layout.Push<float>(2);
-	va->AddBuffer(*vb, layout);
-	va->Bind();
-
-	ib = new IndexBuffer(indices, 6);
-
-	shaderType = ShaderType::whithTexture;
-
-	shader = new Shader(shaderType);
-
-	va->Unbind();
-	vb->UnBind();
-	ib->UnBind();
+	setTexture(imageName);
 }
 
 Sprite::~Sprite()
 {
 	
-}
-
-void Sprite::setTexture(std::string imageName)
-{
-	if(_texture == NULL)
-	{
-		_texture = new Texture("res/textures/" + imageName);
-	}
-	else
-	{
-		delete _texture;
-
-		_texture = new Texture("res/textures/" + imageName);
-	}
-
-	_texture->Bind();
-	
-	shader->Bind();
-
-	shader->SetUniforms1i("u_Texture", 0);
-	
-	shader->Unbind();
 }
 
 void Sprite::setVertices()
@@ -115,12 +51,60 @@ void Sprite::setIndixs()
 	indices[5] = 0;
 }
 
-DllExport void Sprite::calculateVertices()
+void Sprite::calculateVertices()
 {
 
 }
 
-DllExport void Sprite::drawTexture()
+void Sprite::initSprite()
+{
+	setVertices();
+	setIndixs();
+
+	_va = new VertexArray();
+	_vb = new VertexBuffer(positions, 4 * 4 * sizeof(float));
+
+	layout = VertexBufferLayout();
+	layout.Push<float>(2);		 
+	layout.Push<float>(2);
+
+	_va->AddBuffer(*_vb, layout);
+	_va->Bind();
+
+	_ib = new IndexBuffer(indices, 6);
+
+	shaderType = ShaderType::whithTexture;
+
+	shader = new Shader(shaderType);
+
+	_va->Unbind();
+	_vb->UnBind();
+	_ib->UnBind();
+}
+
+void Sprite::setTexture(std::string imageName)
+{
+	if (_texture == NULL)
+	{
+		_texture = new Texture("res/textures/" + imageName);
+	}
+	else
+	{
+		delete _texture;
+
+		_texture = new Texture("res/textures/" + imageName);
+	}
+
+	_texture->Bind();
+
+	shader->Bind();
+
+	shader->SetUniforms1i("u_Texture", 0);
+
+	shader->Unbind();
+}
+
+void Sprite::drawTexture()
 {
 	_texture->Bind();
 

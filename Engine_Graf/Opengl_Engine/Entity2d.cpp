@@ -4,17 +4,17 @@
 
 DllExport Entity2d::Entity2d(int initPositionX, int initPositionY) : Entity(initPositionX, initPositionY)
 {
-	va = NULL;
-	vb = NULL;
-	ib = NULL;
+	_va = NULL;
+	_vb = NULL;
+	_ib = NULL;
 	shader = NULL;
 }
 
 DllExport Entity2d::~Entity2d()
 {
-	delete va;
-	delete vb;
-	delete ib;
+	delete _va;
+	delete _vb;
+	delete _ib;
 	delete shader;	
 }
 
@@ -32,5 +32,5 @@ DllExport void Entity2d::draw()
 	shader->Bind();
 	shader->SetUniformsMat4f("u_MVP", mvp);
 
-	renderer->Draw(va, ib, shader); 
+	renderer->Draw(_va, _ib, shader); 
 }
