@@ -19,8 +19,7 @@
 		VertexBuffer* vb;
 		VertexBufferLayout layout;
 		IndexBuffer* ib;
-		Shader* shader;
-		Texture* texture;
+		Shader* shader;		
 
 		ShaderType shaderType;
 

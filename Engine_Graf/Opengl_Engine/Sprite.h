@@ -8,16 +8,16 @@ class Sprite : public Entity2d
 
 private:
 
-	Texture* textura;	
+	Texture* _texture;
 
-	int width, height;
+	int _width;
+	int _height;
+
 	unsigned int indices[6];
 
-	DllExport void setVertices();
-	DllExport void setVerticesSpriteSheet();
-	DllExport void setIndixs();
+	DllExport void setVertices();	
+	DllExport void setIndixs();	
 	DllExport void calculateVertices();
-
 protected:
 
 	float positions[16];

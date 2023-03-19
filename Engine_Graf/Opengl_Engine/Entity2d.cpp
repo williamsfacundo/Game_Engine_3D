@@ -4,7 +4,10 @@
 
 DllExport Entity2d::Entity2d(int initPositionX, int initPositionY) : Entity(initPositionX, initPositionY)
 {
-
+	va = NULL;
+	vb = NULL;
+	ib = NULL;
+	shader = NULL;
 }
 
 DllExport Entity2d::~Entity2d()
@@ -12,8 +15,7 @@ DllExport Entity2d::~Entity2d()
 	delete va;
 	delete vb;
 	delete ib;
-	delete shader;
-	delete texture;
+	delete shader;	
 }
 
 DllExport glm::vec3* Entity2d::getVertices()
