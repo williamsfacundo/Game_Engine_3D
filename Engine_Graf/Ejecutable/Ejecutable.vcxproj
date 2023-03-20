@@ -97,7 +97,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\GLFW\Include;$(SolutionDir)Dependencies\GLEW\Include;$(SolutionDir)Opengl_Engine;$(SolutionDir)Opengl_Engine\src\vendor;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\GLFW\Include;$(SolutionDir)Dependencies\GLEW\Include;$(SolutionDir)Opengl_Engine\src;$(SolutionDir)Opengl_Engine\src\vendor;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -114,7 +114,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\GLFW\Include;$(SolutionDir)Dependencies\GLEW\Include;$(SolutionDir)Opengl_Engine;$(SolutionDir)Opengl_Engine\src\vendor;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\GLFW\Include;$(SolutionDir)Dependencies\GLEW\Include;$(SolutionDir)Opengl_Engine\src;$(SolutionDir)Opengl_Engine\src\vendor;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

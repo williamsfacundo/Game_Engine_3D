@@ -1,7 +1,7 @@
 #ifndef SHADER_TYPE_H
 #define SHADER_TYPE_H
 
-#include "../../DDLExport.h"
+#include "../DDLExport.h"
 
 DllExport enum class ShaderType
 {
