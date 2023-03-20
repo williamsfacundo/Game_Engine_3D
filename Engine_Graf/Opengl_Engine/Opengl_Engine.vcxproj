@@ -220,9 +220,6 @@
     <ClInclude Include="Window.h" />
     <ClInclude Include="WindowInput.h" />
   </ItemGroup>
-  <ItemGroup>
-    <Image Include="..\Ejecutable\res\textures\Characters.png" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
