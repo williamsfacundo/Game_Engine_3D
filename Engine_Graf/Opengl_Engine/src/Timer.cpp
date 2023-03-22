@@ -1,19 +1,26 @@
 #include "Timer.h"
 
-#include "glfw3.h"
+Timer* Timer::_timer = NULL;
 
-Timer* Timer::S_Timer = nullptr;
+Timer::Timer()
+{
+	deltaTime = 0.0f;
+	oldTime = 0.0f;
+}
 
-Timer::Timer(){}
+Timer::~Timer()
+{
 
-Timer::~Timer(){}
+}
 
 DllExport Timer* Timer::getTimer()
 {
-	if (S_Timer == nullptr) {
-		S_Timer = new Timer();
+	if (_timer == NULL)
+	{
+		_timer = new Timer();
 	}
-	return S_Timer;
+
+	return _timer;
 }
 
 DllExport float Timer::timeBetweenFrames()
@@ -26,4 +33,3 @@ DllExport void Timer::updateDeltaTime()
 	deltaTime = glfwGetTime() - oldTime;
 	oldTime = glfwGetTime();
 }
-
