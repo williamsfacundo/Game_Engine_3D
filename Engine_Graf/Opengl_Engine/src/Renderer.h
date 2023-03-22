@@ -1,4 +1,5 @@
-#pragma once
+#ifndef RENDERER_H
+#define RENDERER_H
 
 #include "GL/glew.h"
 
@@ -18,23 +19,21 @@
 	 ASSERT(GLLogCall(#x, __FILE__, __LINE__))
 
 
- void GLClearError();
+void GLClearError();
 
- bool GLLogCall(const char* funtion, const char* file, int line);
+bool GLLogCall(const char* funtion, const char* file, int line);
 
 #pragma endregion
 
 class Renderer
 {
 private:
-
 	const int WINDOW_WIDTH = 800;
 	const int WINDOW_HEIGHT = 600;
 	DllExport Renderer();
 	static Renderer* S_Renderer;
 
 public:
-
 	DllExport ~Renderer();
 
 	DllExport static Renderer* getRenderer();
@@ -43,10 +42,11 @@ public:
 	DllExport Renderer(Renderer& other) = delete;
 	DllExport void operator=(const Renderer&) = delete;
 
-
 	glm::mat4 proj;
 	glm::mat4 view;
 
 	DllExport void Clear() const;
 	DllExport void Draw(const VertexArray* va, const IndexBuffer* ib, const Shader* shader)const;
 };
+
+#endif

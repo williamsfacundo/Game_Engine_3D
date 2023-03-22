@@ -8,13 +8,10 @@
 
 class Game : public BaseGame
 {
-
-private:
-		
+private:		
 	Entity2d* _sprite;
 
 public:
-
 	Game();
 	~Game();
 

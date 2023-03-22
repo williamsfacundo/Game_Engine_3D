@@ -1,9 +1,9 @@
-#pragma once
+#ifndef SHADER_H
+#define SHADER_H
+
 #include <string>
 #include <unordered_map>
-
 #include "glm/glm.hpp"
-
 #include "ShaderType.h"
 
 struct ShaderProgramSource
@@ -12,11 +12,9 @@ struct ShaderProgramSource
 	std::string FragmentSource;
 };
 
-
 class Shader
 {
 private:
-
 	//std::string m_FilepPath;
 	unsigned int m_RendererID;
 	std::unordered_map<std::string, int> m_UniformLocationCache;
@@ -94,3 +92,4 @@ private:
 	//ShaderProgramSource ParseShader(const std::string& filepath);
 };
 
+#endif

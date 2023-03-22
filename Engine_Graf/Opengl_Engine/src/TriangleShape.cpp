@@ -25,7 +25,6 @@ DllExport TriangleShape::TriangleShape(glm::vec4 RGBA, glm::vec3 initialPosition
 	//texture->Bind();
 	//shader->SetUniforms1i("u_Texture", 0);
 
-
 	_va->Unbind();
 	_vb->UnBind();
 	_ib->UnBind();

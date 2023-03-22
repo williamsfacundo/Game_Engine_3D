@@ -11,21 +11,17 @@
 
 class BaseGame
 {
-
 private:
-
 	Window* window;
 	Renderer* renderer;
 	ImGuiEngine* imGuiEngine;
 	Timer* timer;
 
-protected:
-	
+protected:	
 	DllExport BaseGame();
 	DllExport ~BaseGame();
 
-public:
-	
+public:	
 	DllExport void run();
 
 	DllExport virtual void init() = 0;
