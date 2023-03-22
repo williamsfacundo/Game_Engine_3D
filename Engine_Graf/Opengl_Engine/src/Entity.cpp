@@ -94,6 +94,7 @@ DllExport void Entity::setScaleX(float scalX)
 	scale.x = scalX;
 	UpdateTRSMat();
 }
+
 DllExport void Entity::setScaleY(float scalY)
 {
 	scale.y = scalY;
