@@ -1,11 +1,11 @@
 #include "baseGame.h"
 
 DllExport BaseGame::BaseGame()
-{
-	window = NULL;
-	renderer = NULL;
-	imGuiEngine = NULL;
-	timer = NULL;
+{	
+	window = Window::getWindow();
+	renderer = Renderer::getRenderer();
+	imGuiEngine = ImGuiEngine::getImGuiEngine();
+	timer = Timer::getTimer();
 }
 
 DllExport BaseGame::~BaseGame()
@@ -18,17 +18,14 @@ DllExport BaseGame::~BaseGame()
 
 DllExport void BaseGame::run()
 {
-	window = Window::getWindow();
-	renderer = Renderer::getRenderer();
-	imGuiEngine = ImGuiEngine::getImGuiEngine();
-	timer = Timer::getTimer();
-
 	init();
 
 	while (window->getWindowsShouldClose())
 	{
 		renderer->Clear();
+
 		timer->updateDeltaTime();
+
 		imGuiEngine->imGuiStartDraw();	
 
 		input();
@@ -38,9 +35,11 @@ DllExport void BaseGame::run()
 		draw();
 
 		imGuiEngine->imGuiEndDraw();
+		
 		glfwSwapBuffers(window->getNativeWindow());
+		
 		glfwPollEvents();
 	}
 
-	deinit();	
+	deinit();
 }

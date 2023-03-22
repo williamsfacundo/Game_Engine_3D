@@ -58,7 +58,7 @@ DllExport void Entity::UpdateTRSMat()
 	glm::mat4 sca = glm::scale(glm::mat4(1.0f), scale);
 
 	glm::mat4 rot = rotX * rotY * rotZ;
-	TRS = tras * rot * sca;	
+	TRS = tras * rot * sca;
 }
 
 DllExport void Entity::addPosition(glm::vec3 positionToAdd)

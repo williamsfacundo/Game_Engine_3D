@@ -8,38 +8,33 @@
 
 #include "DDLExport.h"
 
+class Window
+{
+private:
+	static Window* S_Window;
+	
+	GLFWwindow* window;		
+	
+	DllExport Window();
 
-	class Window
-	{
-	private:
+public:
+	static const int WINDOW_WIDTH = 1080;
+	static const int WINDOW_HEIGHT = 720;
 
-		GLFWwindow* window;
+	DllExport static Window* getWindow();
+	DllExport ~Window();
 
-		DllExport Window();
-		static Window* S_Window;
+	DllExport int initGlfw();
+	DllExport void initGlew();
 
+	DllExport int createWindow();
 
-	public:
+	DllExport GLFWwindow* getNativeWindow();
 
-		static const int WINDOW_WIDTH = 1080;
-		static const int WINDOW_HEIGHT = 720;
+	DllExport int GetScreenWidth();
+	DllExport int GetScreenHeight();
 
-		DllExport static Window* getWindow();
-		DllExport ~Window();
-
-		DllExport int initGlfw();
-		DllExport void initGlew();
-
-		DllExport int createWindow();
-
-		DllExport GLFWwindow* getNativeWindow();
-
-		DllExport int GetScreenWidth();
-		DllExport int GetScreenHeight();
-
-		DllExport bool getWindowsShouldClose();
-
-	};
-
+	DllExport bool getWindowsShouldClose();
+};
 
 #endif
