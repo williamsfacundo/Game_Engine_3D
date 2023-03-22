@@ -2,10 +2,10 @@
 
 DllExport BaseGame::BaseGame()
 {	
-	window = Window::getWindow();
-	renderer = Renderer::getRenderer();
-	imGuiEngine = ImGuiEngine::getImGuiEngine();
-	timer = Timer::getTimer();
+	window = NULL;
+	renderer = NULL;
+	imGuiEngine = NULL;
+	timer = NULL;
 }
 
 DllExport BaseGame::~BaseGame()
@@ -16,8 +16,18 @@ DllExport BaseGame::~BaseGame()
 	if (timer != NULL) { delete timer; }
 }
 
-DllExport void BaseGame::run()
+DllExport void BaseGame::setBaseGameClases()
 {
+	window = Window::getWindow();
+	renderer = Renderer::getRenderer();
+	imGuiEngine = ImGuiEngine::getImGuiEngine();
+	timer = Timer::getTimer();
+}
+
+DllExport void BaseGame::runEngine()
+{
+	setBaseGameClases();	
+	
 	init();
 
 	while (window->getWindowsShouldClose())

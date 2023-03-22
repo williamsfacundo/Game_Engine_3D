@@ -1,9 +1,6 @@
 #ifndef BASE_GAME_H
 #define BASE_GAME_H
 
-#include "GL/glew.h"
-#include "glfw3.h"
-#include "DDLExport.h"
 #include "Renderer.h"
 #include "window.h"
 #include "Timer.h"
@@ -17,13 +14,15 @@ private:
 	ImGuiEngine* imGuiEngine;
 	Timer* timer;
 
+	DllExport void setBaseGameClases();
 protected:	
 	DllExport BaseGame();
 	DllExport ~BaseGame();
 
-public:	
-	DllExport void run();
-
+public:
+	
+	DllExport void runEngine();
+	
 	DllExport virtual void init() = 0;
 	DllExport virtual void input() = 0;
 	DllExport virtual void update() = 0;
