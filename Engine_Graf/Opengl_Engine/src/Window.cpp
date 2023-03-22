@@ -50,7 +50,7 @@ DllExport int Window::createWindow() //Aca se puede pedir el tamaño de la pantal
 
 	glfwMakeContextCurrent(_glfwWindow);
 
-	glfwSwapInterval(1); //Ni idea qe onda esto
+	glfwSwapInterval(1);
 
 	initGlew();
 }

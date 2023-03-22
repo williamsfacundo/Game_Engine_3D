@@ -1,8 +1,8 @@
-#pragma once
+#ifndef VERTEX_BUFFER_LAYOUT_H
+#define VERTEX_BUFFER_LAYOUT_H
 
 #include <vector>
 #include "Renderer.h"
-
 
 DllExport struct  VertexbufferElement
 {
@@ -30,17 +30,16 @@ private:
 	unsigned int m_Stride;
 
 public:
-	DllExport	VertexBufferLayout()
-		: m_Stride(0) {}
+	DllExport	VertexBufferLayout() : m_Stride(0) {}
 
 	template<typename T>
-	DllExport void Push(int count)
+	DllExport void Push(unsigned int count)
 	{
 		static_assert(false);
 	}
 
 	template<>
-	DllExport void Push<float>(int count) //Habria que cambiar unsigned int pero se rompe
+	DllExport void Push<float>(unsigned int count) //Habria que cambiar unsigned int pero se rompe
 	{
 		VertexbufferElement vbe{ GL_FLOAT, count, GL_FALSE };
 		m_Elements.push_back(vbe);
@@ -48,7 +47,7 @@ public:
 	}
 
 	template<>
-	DllExport void Push<unsigned int>(int count)
+	DllExport void Push<unsigned int>(unsigned int count)
 	{
 		VertexbufferElement vbe{ GL_UNSIGNED_INT, count, GL_FALSE };
 		m_Elements.push_back(vbe);
@@ -56,7 +55,7 @@ public:
 	}
 
 	template<>
-	DllExport void Push<char>(int count)
+	DllExport void Push<char>(unsigned int count)
 	{
 		VertexbufferElement vbe{ GL_UNSIGNED_BYTE, count, GL_TRUE };
 		m_Elements.push_back(vbe);
@@ -65,6 +64,6 @@ public:
 
 	DllExport inline const std::vector<VertexbufferElement> GetElements() const { return m_Elements; }
 	DllExport inline unsigned int GetStride() const { return m_Stride; }
-
 };
 
+#endif

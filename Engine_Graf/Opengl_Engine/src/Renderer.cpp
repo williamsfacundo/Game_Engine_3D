@@ -1,8 +1,6 @@
 
 #include "Renderer.h"
 
-#include <iostream>
-
 #pragma region Assert
 
 void GLClearError()
