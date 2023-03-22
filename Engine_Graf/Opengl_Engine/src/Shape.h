@@ -15,7 +15,7 @@ class Shape : public Entity2d
 
 public:
 
-		DllExport Shape(int initPositionX, int initPositionY);
+		DllExport Shape(glm::vec3 initialPosition);
 		DllExport ~Shape();
 
 		//Tiene Agregar un Material (Una funcion tiene que pedirlo por parametro)

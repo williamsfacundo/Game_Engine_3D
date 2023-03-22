@@ -1,6 +1,6 @@
 #include "TriangleShape.h"
 
-DllExport TriangleShape::TriangleShape(glm::vec4 RGBA, int initPositionX, int initPositionY) : Shape(initPositionX, initPositionY)
+DllExport TriangleShape::TriangleShape(glm::vec4 RGBA, glm::vec3 initialPosition) : Shape(initialPosition)
 {
 	setVertices();
 	setIndixs();
@@ -34,7 +34,6 @@ DllExport TriangleShape::TriangleShape(glm::vec4 RGBA, int initPositionX, int in
 
 DllExport void TriangleShape::setVertices()
 {
-
 	positions[0] = -50.0f;
 	positions[1] = -50.0f;
 	
@@ -43,15 +42,11 @@ DllExport void TriangleShape::setVertices()
 	
 	positions[4] = 0.0f;
 	positions[5] = 50.0f;
-	
-
 }
 
 DllExport void TriangleShape::setIndixs()
 {
-
 	indices[0] = 0;
 	indices[1] = 1;
 	indices[2] = 2;
-
 }

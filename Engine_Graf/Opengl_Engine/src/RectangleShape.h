@@ -2,7 +2,6 @@
 
 #include "Shape.h"
 
-
 class RectangleShape : public Shape
 {
 
@@ -19,7 +18,7 @@ private:
 
 public:
     
-    DllExport RectangleShape(int initPositionX, int initPositionY);
+    DllExport RectangleShape(glm::vec3 initialPosition);
 
     DllExport void setColor(glm::vec4 RGBA);
 

@@ -2,7 +2,7 @@
 
 #include "ImGuiEngine.h"
 
-DllExport Entity2d::Entity2d(int initPositionX, int initPositionY) : Entity(initPositionX, initPositionY)
+DllExport Entity2d::Entity2d(glm::vec3 initialPosition) : Entity(initialPosition)
 {
 	_va = NULL;
 	_vb = NULL;

@@ -1,11 +1,11 @@
 #include "Sprite.h"
 
-Sprite::Sprite() : Entity2d(0, 0)
+Sprite::Sprite() : Entity2d(glm::vec3(0.0f))
 {
 	initSprite();
 }
 
-Sprite::Sprite(std::string imageName, int initPositionX, int initPositionY) : Entity2d(initPositionX, initPositionY)
+Sprite::Sprite(std::string imageName, glm::vec3 initialPosition) : Entity2d(initialPosition)
 {	
 	initSprite();
 

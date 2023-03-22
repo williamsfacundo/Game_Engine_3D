@@ -30,7 +30,7 @@ protected:
 
 public:
 
-	DllExport Entity2d(int initPositionX, int initPositionY);
+	DllExport Entity2d(glm::vec3 initialPosition);
 	DllExport ~Entity2d();
 
 	DllExport glm::vec3* getVertices();

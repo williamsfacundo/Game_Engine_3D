@@ -1,6 +1,6 @@
 #include "RectangleShape.h"
 
-DllExport RectangleShape::RectangleShape(int initPositionX, int initPositionY) : Shape(initPositionX, initPositionY)
+DllExport RectangleShape::RectangleShape(glm::vec3 initialPosition) : Shape(initialPosition)
 {
 	setVertices();
 	setIndixs();

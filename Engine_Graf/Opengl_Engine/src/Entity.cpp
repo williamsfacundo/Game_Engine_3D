@@ -5,9 +5,9 @@
 
 int Entity::instanceCounter = 0;
 
-DllExport Entity::Entity(int initPositionX, int initPositionY)
+DllExport Entity::Entity(glm::vec3 initialPosition)
 {
-	translation = glm::vec3(initPositionX, initPositionY, 0);
+	translation = initialPosition;
 	rotation = glm::vec3(0, 0, 0);
 	scale = glm::vec3(1, 1, 0);
 
@@ -68,9 +68,9 @@ DllExport void Entity::UpdateTRSMat()
 
 	glm::mat4 rot = rotX * rotY * rotZ;
 	TRS = tras * rot * sca;
+
+	//TRS = glm::rotate(TRS, glm::radians(-55.0f), glm::vec3(1.0f, 0.0f, 0.0f));
 }
-
-
 
 DllExport void Entity::addPosition(glm::vec3 positionToAdd)
 {

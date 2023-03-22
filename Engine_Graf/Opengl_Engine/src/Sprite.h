@@ -28,7 +28,7 @@ protected:
 public:
 
 	DllExport Sprite();
-	DllExport Sprite(std::string imageName, int initPositionX, int initPositionY);
+	DllExport Sprite(std::string imageName, glm::vec3 initialPosition);
 	DllExport ~Sprite();
 
 	DllExport void setTexture(std::string imageName);	

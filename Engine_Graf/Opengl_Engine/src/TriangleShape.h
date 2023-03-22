@@ -17,9 +17,5 @@ private:
 
 public:
     
-    DllExport TriangleShape(glm::vec4 RGBA, int initPositionX, int initPositionY);
-
-
-
+    DllExport TriangleShape(glm::vec4 RGBA, glm::vec3 initialPosition);
 };
-

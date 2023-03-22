@@ -24,31 +24,29 @@
 
 #pragma endregion
 
-	class Renderer
-	{
+class Renderer
+{
+private:
 
-	private:
+	const int WINDOW_WIDTH = 800;
+	const int WINDOW_HEIGHT = 600;
+	DllExport Renderer();
+	static Renderer* S_Renderer;
 
-		const int WINDOW_WIDTH = 1080;
-		const int WINDOW_HEIGHT = 720;
-		DllExport Renderer();
-		static Renderer* S_Renderer;
+public:
 
-	public:
+	DllExport ~Renderer();
 
-		DllExport ~Renderer();
+	DllExport static Renderer* getRenderer();
+	DllExport void initRenderer();
 
-		DllExport static Renderer* getRenderer();
-		DllExport void initRenderer();
-
-		DllExport Renderer(Renderer& other) = delete;
-		DllExport void operator=(const Renderer&) = delete;
+	DllExport Renderer(Renderer& other) = delete;
+	DllExport void operator=(const Renderer&) = delete;
 
 
-		glm::mat4 proj;
-		glm::mat4 view;
+	glm::mat4 proj;
+	glm::mat4 view;
 
-		DllExport void Clear() const;
-		DllExport void Draw(const VertexArray* va, const IndexBuffer* ib, const Shader* shader)const;
-	};
-
+	DllExport void Clear() const;
+	DllExport void Draw(const VertexArray* va, const IndexBuffer* ib, const Shader* shader)const;
+};

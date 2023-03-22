@@ -24,7 +24,7 @@
 		glm::mat4 TRS = glm::mat4(1);
 
 	public:
-		DllExport Entity(int initPositionX, int initPositionY);
+		DllExport Entity(glm::vec3 initialPosition);
 		DllExport ~Entity();
 
 		DllExport void setPosition(glm::vec3 newPosition);

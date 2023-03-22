@@ -12,7 +12,7 @@ Game::~Game()
 
 void Game::init()
 {	
-	_sprite = new Sprite("Logo.jpg", 300, 200);	
+	_sprite = new Sprite("Logo.jpg", glm::vec3(1.0f, 1.0f, 50.0f));
 }
 
 void Game::input()
