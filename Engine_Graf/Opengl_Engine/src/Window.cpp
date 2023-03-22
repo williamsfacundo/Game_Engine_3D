@@ -1,6 +1,6 @@
 #include "Window.h"
 
-Window* Window::S_Window = nullptr;
+Window* Window::_window = NULL;
 
 DllExport Window::Window()
 {
@@ -9,12 +9,12 @@ DllExport Window::Window()
 
 DllExport Window* Window::getWindow()
 {
-	if (S_Window == nullptr) 
+	if (_window == NULL)
 	{
-		S_Window = new Window();
+		_window = new Window();
 	}
 
-	return S_Window;
+	return _window;
 }
 
 DllExport Window::~Window()
@@ -40,15 +40,15 @@ DllExport int Window::createWindow() //Aca se puede pedir el tamaño de la pantal
 	if (!initGlfw())
 		return -1;
 
-	window = glfwCreateWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "OpenGl_Engine", NULL, NULL);
+	_glfwWindow = glfwCreateWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "OpenGl_Engine", NULL, NULL);
 
-	if (!window)
+	if (!_glfwWindow)
 	{
 		glfwTerminate();
 		return -1;
 	}
 
-	glfwMakeContextCurrent(window);
+	glfwMakeContextCurrent(_glfwWindow);
 
 	glfwSwapInterval(1); //Ni idea qe onda esto
 
@@ -57,7 +57,7 @@ DllExport int Window::createWindow() //Aca se puede pedir el tamaño de la pantal
 
 DllExport GLFWwindow* Window::getNativeWindow()
 {
-	return window;
+	return _glfwWindow;
 }
 	
 DllExport int Window::GetScreenWidth()

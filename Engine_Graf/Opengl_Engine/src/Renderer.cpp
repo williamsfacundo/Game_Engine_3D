@@ -46,11 +46,11 @@ DllExport Renderer* Renderer::getRenderer()
 	return S_Renderer;
 }
 
-DllExport	void Renderer::initRenderer()
+DllExport void Renderer::initRenderer()
 {
 	Window* window = Window::getWindow();
 
-	proj = glm::ortho(0.0f, (float)window->WINDOW_WIDTH, 0.0f, (float)window->WINDOW_HEIGHT, -1.0f, 1.0f); //Proyeccion ortografica
+	proj = glm::ortho(0.0f, (float)window->GetScreenWidth(), 0.0f, (float)window->GetScreenHeight(), -1.0f, 1.0f);
 	//proj = glm::perspective(glm::radians(45.0f), static_cast<float>(WINDOW_WIDTH / WINDOW_HEIGHT), 0.1f, 100.0f);
 	view = glm::lookAt(glm::vec3(0.0f, 0.0f, 1.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 	//view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f));

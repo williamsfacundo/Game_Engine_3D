@@ -11,16 +11,16 @@
 class Window
 {
 private:
-	static Window* S_Window;
+	static const int WINDOW_WIDTH = 1080;
+	static const int WINDOW_HEIGHT = 720;
 	
-	GLFWwindow* window;		
+	static Window* _window;
+	
+	GLFWwindow* _glfwWindow;
 	
 	DllExport Window();
 
 public:
-	static const int WINDOW_WIDTH = 1080;
-	static const int WINDOW_HEIGHT = 720;
-
 	DllExport static Window* getWindow();
 	DllExport ~Window();
 
@@ -31,8 +31,8 @@ public:
 
 	DllExport GLFWwindow* getNativeWindow();
 
-	DllExport int GetScreenWidth();
-	DllExport int GetScreenHeight();
+	DllExport static int GetScreenWidth();
+	DllExport static int GetScreenHeight();
 
 	DllExport bool getWindowsShouldClose();
 };
