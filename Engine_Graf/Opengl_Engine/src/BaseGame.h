@@ -9,18 +9,18 @@
 class BaseGame
 {
 private:
-	Window* window;
-	Renderer* renderer;
-	ImGuiEngine* imGuiEngine;
-	Timer* timer;
+	Window* _window;
+	Renderer* _renderer;
+	ImGuiEngine* _imGuiEngine;
+	Timer* _timer;
 
 	DllExport void setBaseGameClases();
+
 protected:	
 	DllExport BaseGame();
 	DllExport ~BaseGame();
 
-public:
-	
+public:	
 	DllExport void runEngine();
 	
 	DllExport virtual void init() = 0;

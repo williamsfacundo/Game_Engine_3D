@@ -2,26 +2,26 @@
 
 DllExport BaseGame::BaseGame()
 {	
-	window = NULL;
-	renderer = NULL;
-	imGuiEngine = NULL;
-	timer = NULL;
+	_window = NULL;
+	_renderer = NULL;
+	_imGuiEngine = NULL;
+	_timer = NULL;
 }
 
 DllExport BaseGame::~BaseGame()
 {
-	if (window != NULL) { delete window; }
-	if (renderer != NULL) { delete renderer; }
-	if (imGuiEngine != NULL) { delete imGuiEngine; }
-	if (timer != NULL) { delete timer; }
+	if (_window != NULL) { delete _window; }
+	if (_renderer != NULL) { delete _renderer; }
+	if (_imGuiEngine != NULL) { delete _imGuiEngine; }
+	if (_timer != NULL) { delete _timer; }
 }
 
 DllExport void BaseGame::setBaseGameClases()
 {
-	window = Window::getWindow();
-	renderer = Renderer::getRenderer();
-	imGuiEngine = ImGuiEngine::getImGuiEngine();
-	timer = Timer::getTimer();
+	_window = Window::getWindow();
+	_renderer = Renderer::getRenderer();
+	_imGuiEngine = ImGuiEngine::getImGuiEngine();
+	_timer = Timer::getTimer();
 }
 
 DllExport void BaseGame::runEngine()
@@ -30,13 +30,13 @@ DllExport void BaseGame::runEngine()
 	
 	init();
 
-	while (window->getWindowsShouldClose())
+	while (_window->getWindowsShouldClose())
 	{
-		renderer->Clear();
+		_renderer->Clear();
 
-		timer->updateDeltaTime();
+		_timer->updateDeltaTime();
 
-		imGuiEngine->imGuiStartDraw();	
+		_imGuiEngine->imGuiStartDraw();	
 
 		input();
 
@@ -44,9 +44,9 @@ DllExport void BaseGame::runEngine()
 
 		draw();
 
-		imGuiEngine->imGuiEndDraw();
+		_imGuiEngine->imGuiEndDraw();
 		
-		glfwSwapBuffers(window->getNativeWindow());
+		glfwSwapBuffers(_window->getNativeWindow());
 		
 		glfwPollEvents();
 	}
