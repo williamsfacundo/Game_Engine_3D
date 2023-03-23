@@ -1,18 +1,20 @@
 #include "Entity.h"
 
-int Entity::entitiesCount = 0;
+int Entity::EntitiesCount = 0;
 
 DllExport Entity::Entity(glm::vec3 initialPosition)
 {
-	_localId = entitiesCount;
+	_localId = EntitiesCount;
 	
-	entitiesCount++;
+	EntitiesCount++;
 
 	_modelMatrix = glm::mat4();
 
-	translation = initialPosition;
-	rotation = glm::vec3(0, 0, 0);
-	scale = glm::vec3(1, 1, 0);
+	_translation = initialPosition;
+
+	_rotation = glm::vec3(0, 0, 0);
+
+	_scale = glm::vec3(1, 1, 0);
 	
 	UpdateTRSMat();
 }
@@ -24,177 +26,180 @@ DllExport Entity::~Entity()
 
 DllExport void Entity::UpdateTRSMat()
 {
-	glm::mat4 tras = glm::translate(glm::mat4(1.0f), translation);
+	_translationMatrix = glm::translate(glm::mat4(1.0f), _translation);
 
-	glm::mat4 rotX = glm::rotate(glm::mat4(1.0f), glm::radians(rotation.x), glm::vec3(1.0f, 0.0f, 0.0f));
-	glm::mat4 rotY = glm::rotate(glm::mat4(1.0f), glm::radians(rotation.y), glm::vec3(0.0f, 1.0f, 0.0f));
-	glm::mat4 rotZ = glm::rotate(glm::mat4(1.0f), glm::radians(rotation.z), glm::vec3(0.0f, 0.0f, 1.0f));
+	_scalingMatrix = glm::scale(glm::mat4(1.0f), _scale);
 
-	glm::mat4 sca = glm::scale(glm::mat4(1.0f), scale);
+	_xRotationMatrix = glm::rotate(glm::mat4(1.0f), glm::radians(_rotation.x), glm::vec3(1.0f, 0.0f, 0.0f));
+	_yRotationMatrix = glm::rotate(glm::mat4(1.0f), glm::radians(_rotation.y), glm::vec3(0.0f, 1.0f, 0.0f));
+	_zRotationMatrix = glm::rotate(glm::mat4(1.0f), glm::radians(_rotation.z), glm::vec3(0.0f, 0.0f, 1.0f));
 
-	glm::mat4 rot = rotX * rotY * rotZ;
+	_rotationMatrix = _xRotationMatrix * _yRotationMatrix * _zRotationMatrix;
 
-	_modelMatrix = tras * rot * sca;
+	_modelMatrix = _translationMatrix * _rotationMatrix * _scalingMatrix;
 }
 
 DllExport void Entity::addPosition(glm::vec3 positionToAdd)
 {
-	translation += positionToAdd;
+	_translation += positionToAdd;
 
 	UpdateTRSMat();
 }
 
 DllExport void Entity::addScale(glm::vec3 scaleToAdd)
 {
-	scale += scaleToAdd;
+	_scale += scaleToAdd;
 
 	UpdateTRSMat();
 }
 
 DllExport void Entity::addRotation(glm::vec3 rotationToAdd)
 {
-	rotation += rotationToAdd;
+	_rotation += rotationToAdd;
 }
 
 DllExport void Entity::setPosition(glm::vec3 newPosition)
 {
-	translation = newPosition;
+	_translation = newPosition;
+
 	UpdateTRSMat();
 }
 
 DllExport void Entity::setRotation(glm::vec3 newRotation)
 {
-	rotation = newRotation;
+	_rotation = newRotation;
+
 	UpdateTRSMat();
 }
 
 DllExport void Entity::setScale(glm::vec3 newScale)
 {
-	scale = newScale;
+	_scale = newScale;
+
 	UpdateTRSMat();
 }
 
 DllExport void Entity::setPositionX(float posX)
 {
-	translation.x = posX;
+	_translation.x = posX;
 
 	UpdateTRSMat();
 }
 
 DllExport void Entity::setPositionY(float posY)
 {
-	translation.y = posY;
+	_translation.y = posY;
 
 	UpdateTRSMat();
 }
 
 DllExport void Entity::setPositionZ(float posZ)
 {
-	translation.z = posZ;
+	_translation.z = posZ;
 
 	UpdateTRSMat();
 }
 
 DllExport void Entity::setScaleX(float scalX)
 {
-	scale.x = scalX;
+	_scale.x = scalX;
 
 	UpdateTRSMat();
 }
 
 DllExport void Entity::setScaleY(float scalY)
 {
-	scale.y = scalY;
+	_scale.y = scalY;
 
 	UpdateTRSMat();
 }
 
 DllExport void  Entity::setScaleZ(float scalZ)
 {
-	scale.z = scalZ;
+	_scale.z = scalZ;
 
 	UpdateTRSMat();
 }
 
 DllExport void  Entity::setRotationX(float rotX)
 {
-	rotation.x = rotX;
+	_rotation.x = rotX;
 
 	UpdateTRSMat();
 }
 
 DllExport void  Entity::setRotationY(float rotY)
 {
-	rotation.y = rotY;
+	_rotation.y = rotY;
 
 	UpdateTRSMat();
 }
 
 DllExport void Entity::setRotationZ(float rotZ)
 {
-	rotation.z = rotZ;
+	_rotation.z = rotZ;
 
 	UpdateTRSMat();
 }
 
 DllExport glm::vec3 Entity::getPosition()
 {
-	return translation;
+	return _translation;
 }
 
 DllExport glm::vec3 Entity::getRotation()
 {
-	return rotation;
+	return _rotation;
 }
 
 DllExport glm::vec3 Entity::getScale()
 {
-	return scale;
+	return _scale;
 }
 
 DllExport float Entity::getPositionX()
 {
-	return translation.x;
+	return _translation.x;
 }
 
 DllExport float Entity::getPositionY()
 {
-	return translation.y;
+	return _translation.y;
 }
 
 DllExport float Entity::getPositionZ()
 {
-	return translation.z;
+	return _translation.z;
 }
 	  
 DllExport float Entity::getScaleX()
 {
-	return scale.x;
+	return _scale.x;
 }
 
 DllExport float Entity::getScaleY()
 {
-	return scale.y;
+	return _scale.y;
 }
 
 DllExport float Entity::getScaleZ()
 {
-	return scale.z;
+	return _scale.z;
 }
 
 DllExport float Entity::getRotationX()
 {
-	return rotation.x;
+	return _rotation.x;
 }
 
 DllExport float Entity::getRotationY()
 {
-	return rotation.y;
+	return _rotation.y;
 }
 
 DllExport float Entity::getRotationZ()
 {
-	return rotation.z;
+	return _rotation.z;
 }
 
 DllExport int Entity::getLocalId()

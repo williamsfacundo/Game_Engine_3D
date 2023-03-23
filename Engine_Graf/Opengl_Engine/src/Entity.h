@@ -10,13 +10,21 @@
 class Entity
 {
 private:	
-	static int entitiesCount;
-	
+	static int EntitiesCount;
+
 	int _localId;
 	
-	glm::vec3 translation;
-	glm::vec3 rotation;
-	glm::vec3 scale;
+	glm::vec3 _translation;
+	glm::vec3 _rotation;
+	glm::vec3 _scale;
+
+	glm::mat4 _xRotationMatrix;
+	glm::mat4 _yRotationMatrix;
+	glm::mat4 _zRotationMatrix;
+
+	glm::mat4 _translationMatrix;
+	glm::mat4 _rotationMatrix;
+	glm::mat4 _scalingMatrix;
 
 	glm::mat4 _modelMatrix;
 
