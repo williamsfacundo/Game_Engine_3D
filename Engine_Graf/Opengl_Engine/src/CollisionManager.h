@@ -2,6 +2,7 @@
 #define COLLISION_MANAGER_H
 
 #include "glm/glm.hpp"
+
 #include "DDLExport.h"
 
 class CollisionManager
