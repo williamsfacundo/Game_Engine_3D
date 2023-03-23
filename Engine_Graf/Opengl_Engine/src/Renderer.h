@@ -24,17 +24,22 @@ bool GLLogCall(const char* funtion, const char* file, int line);
 class Renderer
 {
 private:	
-	DllExport Renderer();
-	static Renderer* S_Renderer;
-
-public:
-	glm::mat4 proj;
-	glm::mat4 view;
+	static Renderer* _renderer;
 	
+	glm::mat4 _projectionMatrix;
+	glm::mat4 _viewMatrix;
+	
+	DllExport Renderer();
+
+public:	
 	DllExport ~Renderer();
 
-	DllExport static Renderer* getRenderer();
 	DllExport void initRenderer();
+	
+	DllExport static Renderer* getRenderer();
+	
+	DllExport glm::mat4 getProjectionMatrix();
+	DllExport glm::mat4 getViewMatrix();
 
 	DllExport Renderer(Renderer& other) = delete;
 	DllExport void operator=(const Renderer&) = delete;
