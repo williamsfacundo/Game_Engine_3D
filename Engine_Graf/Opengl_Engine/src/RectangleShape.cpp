@@ -66,15 +66,8 @@ DllExport void RectangleShape::setIndixs()
 
 DllExport void RectangleShape::calculateVertices()
 {
-	//glm::vec3 scale = getScale();
-	//glm::vec3 rotation = getRotation();
-	//int scaleX = scale.x;
-	//int scaleY = scale.y;
-	//int rotZ   = rotation.z;
-
 	vertices[0] = getPosition() + (-glm::vec3(1.0f * getScaleX() * width / 2, 0.0f, 0.0f)) + (glm::vec3(0.0f, 1.0f *  getScaleY() * height / 2, 0.0f));
 	vertices[1] = getPosition() + (glm::vec3(1.0f * getScaleX() * width / 2, 0.0f, 0.0f)) + (glm::vec3(0.0f, 1.0f *   getScaleY() * height / 2, 0.0f));
 	vertices[2] = getPosition() + (glm::vec3(1.0f * getScaleX() * width / 2, 0.0f, 0.0f)) + (-glm::vec3(0.0f, 1.0f *  getScaleY() * height / 2, 0.0f));
 	vertices[3] = getPosition() + (-glm::vec3(1.0f * getScaleX() * width / 2, 0.0f, 0.0f)) + (-glm::vec3(0.0f, 1.0f * getScaleY() * height / 2, 0.0f));
 }
-
