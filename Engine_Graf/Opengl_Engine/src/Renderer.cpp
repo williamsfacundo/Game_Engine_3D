@@ -64,12 +64,12 @@ DllExport glm::mat4 Renderer::getViewMatrix()
 	return _viewMatrix;
 }
 
-DllExport void Renderer::Clear() const
+DllExport void Renderer::Clear()
 {
 	GLCall(glClear(GL_COLOR_BUFFER_BIT));
 }
 
-DllExport void Renderer::Draw(const VertexArray* va, const IndexBuffer* ib, const Shader* shader) const
+DllExport void Renderer::Draw(const VertexArray* va, const IndexBuffer* ib, const Shader* shader)
 {
 	shader->Bind();
 	va->Bind();

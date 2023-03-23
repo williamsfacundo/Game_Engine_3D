@@ -44,8 +44,8 @@ public:
 	DllExport Renderer(Renderer& other) = delete;
 	DllExport void operator=(const Renderer&) = delete;
 
-	DllExport void Clear() const;
-	DllExport void Draw(const VertexArray* va, const IndexBuffer* ib, const Shader* shader)const;
+	DllExport void Clear();
+	DllExport void Draw(const VertexArray* va, const IndexBuffer* ib, const Shader* shader);
 };
 
 #endif
