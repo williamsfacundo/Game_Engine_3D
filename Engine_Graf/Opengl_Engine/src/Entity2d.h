@@ -12,14 +12,13 @@
 
 class Entity2d : public Entity
 {
-
 protected:
 
 	VertexArray* _va;
 	VertexBuffer* _vb;
 	VertexBufferLayout layout;
 	IndexBuffer* _ib;
-	Shader* shader;		
+	Shader* shader;
 
 	ShaderType shaderType;
 

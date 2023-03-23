@@ -36,12 +36,9 @@ Renderer::~Renderer()
 
 DllExport void Renderer::initRenderer()
 {
-	Window* window = Window::getWindow();
-
-	_projectionMatrix = glm::ortho(0.0f, (float)window->GetScreenWidth(), 0.0f, (float)window->GetScreenHeight(), -1.0f, 1.0f);
-	//proj = glm::perspective(glm::radians(45.0f), static_cast<float>(WINDOW_WIDTH / WINDOW_HEIGHT), 0.1f, 100.0f);
+	_projectionMatrix = glm::ortho(0.0f, (float)Window::getWindow()->GetScreenWidth(), 0.0f, (float)Window::getWindow()->GetScreenHeight(), -1.0f, 1.0f);
+	
 	_viewMatrix = glm::lookAt(glm::vec3(0.0f, 0.0f, 1.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-	//view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f));
 }
 
 DllExport Renderer* Renderer::getRenderer()

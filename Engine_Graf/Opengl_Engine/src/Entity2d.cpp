@@ -15,7 +15,7 @@ DllExport Entity2d::~Entity2d()
 	delete _va;
 	delete _vb;
 	delete _ib;
-	delete shader;	
+	delete shader;
 }
 
 DllExport glm::vec3* Entity2d::getVertices()
@@ -25,12 +25,12 @@ DllExport glm::vec3* Entity2d::getVertices()
 
 DllExport void Entity2d::draw()
 {
-	ImGuiEngine::getImGuiEngine()->imGuiDrawObject(this, id);
+	ImGuiEngine::getImGuiEngine()->imGuiDrawObject(this, getLocalId());
 
-	glm::mat4 mvp = renderer->getProjectionMatrix() * renderer->getViewMatrix() * TRS;
+	glm::mat4 mvp = Renderer::getRenderer()->getProjectionMatrix() * Renderer::getRenderer()->getRenderer()->getViewMatrix() * TRS;
 
 	shader->Bind();
 	shader->SetUniformsMat4f("u_MVP", mvp);
 
-	renderer->Draw(_va, _ib, shader); 
+	Renderer::getRenderer()->Draw(_va, _ib, shader);
 }
