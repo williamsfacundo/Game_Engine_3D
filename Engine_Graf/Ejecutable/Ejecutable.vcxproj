@@ -164,6 +164,14 @@
   <ItemGroup>
     <ClInclude Include="src\Game.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\textures\Characters.png" />
+    <Image Include="res\textures\Logo.jpg" />
+    <Image Include="res\textures\Logo1.png" />
+    <Image Include="res\textures\Mario.png" />
+    <Image Include="res\textures\Pacman.png" />
+    <Image Include="res\textures\TilePallet.png" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
