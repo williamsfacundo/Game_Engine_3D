@@ -23,7 +23,7 @@ DllExport Timer* Timer::getTimer()
 	return _timer;
 }
 
-DllExport float Timer::timeBetweenFrames()
+DllExport double Timer::timeBetweenFrames()
 {
 	return deltaTime;
 }

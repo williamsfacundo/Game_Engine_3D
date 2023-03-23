@@ -1,6 +1,6 @@
 #include "CollisionManager.h"
 
-DllExport void CollisionManager::ProjectVertices(glm::vec3 vertices[], int size, glm::vec3 axis, float& min, float& max)
+DllExport void CollisionManager::ProjectVertices(glm::vec3 vertices[], int size, glm::vec3 axis, double& min, double& max)
 {
 	min =  3.40282347E+38;
 	max = -3.40282347E+38;
@@ -15,13 +15,12 @@ DllExport void CollisionManager::ProjectVertices(glm::vec3 vertices[], int size,
 	}
 }
 
-
-DllExport bool CollisionManager::IntersectPolygons(glm::vec3 verticesA[], int sizeA, glm::vec3 verticesB[], int sizeB, glm::vec3& normal , float& depth)
+DllExport bool CollisionManager::IntersectPolygons(glm::vec3 verticesA[], int sizeA, glm::vec3 verticesB[], int sizeB, glm::vec3& normal , double& depth)
 {
 	normal = glm::vec3(0, 0, 0);
 	depth = 3.40282347E+38;
-	float minA, maxA;
-	float minB, maxB;
+	double minA, maxA;
+	double minB, maxB;
 
 	// Busco entre todos los vertices de A para generar una proyeccion y ver si hay una separacion
 	for (int i = 0; i < sizeA; i++)
@@ -46,9 +45,7 @@ DllExport bool CollisionManager::IntersectPolygons(glm::vec3 verticesA[], int si
 		{
 			depth = axisDepth;
 			normal = axis;
-		}
-
-	
+		}	
 	}
 
 	// Lo mismo que con los vertices A pero con los vertices B
@@ -97,7 +94,6 @@ DllExport bool CollisionManager::IntersectPolygons(glm::vec3 verticesA[], int si
 	}
 
 	return true;
-
 }
 
 DllExport glm::vec3 CollisionManager::FindArithmeticMean(glm::vec3 vertices[], int size)
@@ -113,4 +109,3 @@ DllExport glm::vec3 CollisionManager::FindArithmeticMean(glm::vec3 vertices[], i
 
 	return glm::vec3(sumX / (float)size, sumY / (float)size, 0.0f);
 }
-

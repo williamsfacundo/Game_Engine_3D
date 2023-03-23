@@ -11,8 +11,10 @@
 class Window
 {
 private:
-	static const int WINDOW_WIDTH = 1080;
-	static const int WINDOW_HEIGHT = 720;
+	static const int WindowWidth = 1080;
+	static const int WindowHeight = 720;
+
+	const char* WindowName = "WILLIAMS";
 	
 	static Window* _window;
 	
@@ -27,7 +29,7 @@ public:
 	DllExport int initGlfw();
 	DllExport void initGlew();
 
-	DllExport int createWindow();
+	DllExport void createWindow();
 
 	DllExport GLFWwindow* getNativeWindow();
 

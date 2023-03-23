@@ -10,8 +10,8 @@ class Timer
 private:
 	static Timer* _timer;
 	
-	float deltaTime;
-	float oldTime;
+	double deltaTime;
+	double oldTime;
 
 	DllExport Timer();
 
@@ -20,7 +20,7 @@ public:
 
 	DllExport static Timer* getTimer();
 
-	DllExport float timeBetweenFrames();
+	DllExport double timeBetweenFrames();
 
 	DllExport void updateDeltaTime();
 };

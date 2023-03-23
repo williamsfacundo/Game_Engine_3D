@@ -35,17 +35,19 @@ DllExport void Window::initGlew()
 	}
 }
 
-DllExport int Window::createWindow() //Aca se puede pedir el tamaño de la pantalla
+DllExport void Window::createWindow()
 {
 	if (!initGlfw())
-		return -1;
+	{
+		return;
+	}
 
-	_glfwWindow = glfwCreateWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "OpenGl_Engine", NULL, NULL);
+	_glfwWindow = glfwCreateWindow(WindowWidth, WindowHeight, WindowName, NULL, NULL);
 
 	if (!_glfwWindow)
 	{
 		glfwTerminate();
-		return -1;
+		return;
 	}
 
 	glfwMakeContextCurrent(_glfwWindow);
@@ -62,15 +64,15 @@ DllExport GLFWwindow* Window::getNativeWindow()
 	
 DllExport int Window::GetScreenWidth()
 {
-	return WINDOW_WIDTH;
+	return WindowWidth;
 }
 
 DllExport int Window::GetScreenHeight()
 {
-	return WINDOW_HEIGHT;
+	return WindowHeight;
 }
 
 DllExport bool Window::getWindowsShouldClose()
 {
-	return glfwWindowShouldClose;
+	return static_cast<bool>(glfwWindowShouldClose);
 }
