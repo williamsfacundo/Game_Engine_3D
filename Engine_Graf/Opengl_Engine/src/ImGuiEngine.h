@@ -1,4 +1,5 @@
-#pragma once
+#ifndef IM_GUI_ENGINE_H
+#define IM_GUI_ENGINE_H
 
 #include "glm/glm.hpp"
 
@@ -26,10 +27,11 @@ public:
 	DllExport static ImGuiEngine* getImGuiEngine();
 
 	DllExport ~ImGuiEngine();
-	
+
 	DllExport void imGuiStartDraw();
 	DllExport void imGuiEndDraw();
-	
+
 	DllExport void imGuiDrawObject(Entity2d* entity2d, int index);
 };
 
+#endif
