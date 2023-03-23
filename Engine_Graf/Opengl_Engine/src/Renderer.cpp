@@ -69,10 +69,12 @@ DllExport void Renderer::Clear()
 DllExport void Renderer::Draw(const VertexArray* va, const IndexBuffer* ib, const Shader* shader)
 {
 	shader->Bind();
-
-	va->Bind();
-	
+	va->Bind();	
 	ib->Bind();
 
 	GLCall(glDrawElements(GL_TRIANGLES, ib->GetCount(), GL_UNSIGNED_INT, NULL));
+
+	shader->Unbind();
+	va->Unbind();
+	ib->UnBind();
 }
