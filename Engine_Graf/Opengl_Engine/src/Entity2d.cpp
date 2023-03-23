@@ -10,10 +10,10 @@ DllExport Entity2d::Entity2d(glm::vec3 initialPosition) : Entity(initialPosition
 	_ib = NULL;
 	_shader = NULL;
 	_shaderType = ShaderType::noTexture; 
-	vertices[0] = glm::vec3();
-	vertices[1] = glm::vec3();
-	vertices[2] = glm::vec3();
-	vertices[3] = glm::vec3();
+	_vertices[0] = glm::vec3();
+	_vertices[1] = glm::vec3();
+	_vertices[2] = glm::vec3();
+	_vertices[3] = glm::vec3();
 }
 
 DllExport Entity2d::~Entity2d()
@@ -27,7 +27,7 @@ DllExport Entity2d::~Entity2d()
 
 DllExport glm::vec3* Entity2d::getVertices()
 {
-	return vertices;
+	return _vertices;
 }
 
 DllExport void Entity2d::draw()

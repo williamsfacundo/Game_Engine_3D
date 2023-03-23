@@ -24,7 +24,7 @@ protected:
 
 	ShaderType _shaderType;
 
-	glm::vec3 vertices[4];
+	glm::vec3 _vertices[4];
 
 	DllExport virtual void  setVertices() = 0;
 	DllExport virtual void  setIndixs() = 0;

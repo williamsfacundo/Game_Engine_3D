@@ -51,7 +51,6 @@ DllExport void RectangleShape::setVertices()
 
 	positions[6] = -50.0f;
 	positions[7] = 50.0f;
-
 }
 
 DllExport void RectangleShape::setIndixs()
@@ -66,8 +65,8 @@ DllExport void RectangleShape::setIndixs()
 
 DllExport void RectangleShape::calculateVertices()
 {
-	vertices[0] = getPosition() + (-glm::vec3(1.0f * getScaleX() * width / 2, 0.0f, 0.0f)) + (glm::vec3(0.0f, 1.0f *  getScaleY() * height / 2, 0.0f));
-	vertices[1] = getPosition() + (glm::vec3(1.0f * getScaleX() * width / 2, 0.0f, 0.0f)) + (glm::vec3(0.0f, 1.0f *   getScaleY() * height / 2, 0.0f));
-	vertices[2] = getPosition() + (glm::vec3(1.0f * getScaleX() * width / 2, 0.0f, 0.0f)) + (-glm::vec3(0.0f, 1.0f *  getScaleY() * height / 2, 0.0f));
-	vertices[3] = getPosition() + (-glm::vec3(1.0f * getScaleX() * width / 2, 0.0f, 0.0f)) + (-glm::vec3(0.0f, 1.0f * getScaleY() * height / 2, 0.0f));
+	_vertices[0] = getPosition() + (-glm::vec3(1.0f * getScaleX() * width / 2, 0.0f, 0.0f)) + (glm::vec3(0.0f, 1.0f *  getScaleY() * height / 2, 0.0f));
+	_vertices[1] = getPosition() + (glm::vec3(1.0f * getScaleX() * width / 2, 0.0f, 0.0f)) + (glm::vec3(0.0f, 1.0f *   getScaleY() * height / 2, 0.0f));
+	_vertices[2] = getPosition() + (glm::vec3(1.0f * getScaleX() * width / 2, 0.0f, 0.0f)) + (-glm::vec3(0.0f, 1.0f *  getScaleY() * height / 2, 0.0f));
+	_vertices[3] = getPosition() + (-glm::vec3(1.0f * getScaleX() * width / 2, 0.0f, 0.0f)) + (-glm::vec3(0.0f, 1.0f * getScaleY() * height / 2, 0.0f));
 }
