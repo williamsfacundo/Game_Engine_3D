@@ -4,7 +4,7 @@
 #include <vector>
 #include "Renderer.h"
 
-DllExport struct  VertexbufferElement
+struct VertexbufferElement
 {
 	unsigned int type;
 	unsigned int count;

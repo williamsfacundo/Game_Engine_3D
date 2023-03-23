@@ -3,7 +3,7 @@
 
 #include "../DDLExport.h"
 
-DllExport enum class ShaderType
+enum class ShaderType
 {
 	whithTexture,
 	noTexture
