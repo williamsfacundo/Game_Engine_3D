@@ -39,7 +39,7 @@ DllExport bool CollisionManager::IntersectPolygons(glm::vec3 verticesA[], int si
 			return false;
 		}
 
-		float axisDepth = glm::min(maxB - minA, maxA - minB); // Aca se calcula cual es el menor valor para saber que tan profunda fue la interseccion
+		double axisDepth = glm::min(maxB - minA, maxA - minB); // Aca se calcula cual es el menor valor para saber que tan profunda fue la interseccion
 
 		if (axisDepth < depth)
 		{
@@ -65,7 +65,7 @@ DllExport bool CollisionManager::IntersectPolygons(glm::vec3 verticesA[], int si
 			return false;
 		}
 
-		float axisDepth = glm::min(maxB - minA, maxA - minB);
+		double axisDepth = glm::min(maxB - minA, maxA - minB);
 
 		if (axisDepth < depth)
 		{
