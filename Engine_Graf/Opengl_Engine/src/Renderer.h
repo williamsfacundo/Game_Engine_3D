@@ -40,11 +40,9 @@ public:
 	
 	DllExport glm::mat4 getProjectionMatrix();
 	DllExport glm::mat4 getViewMatrix();
-
-	DllExport Renderer(Renderer& other) = delete;
-	DllExport void operator=(const Renderer&) = delete;
-
+	
 	DllExport void Clear();
+
 	DllExport void Draw(const VertexArray* va, const IndexBuffer* ib, const Shader* shader);
 };
 
