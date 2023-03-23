@@ -22,7 +22,7 @@ protected:
 	
 	Shader* _shader;
 
-	ShaderType shaderType;
+	ShaderType _shaderType;
 
 	glm::vec3 vertices[4];
 

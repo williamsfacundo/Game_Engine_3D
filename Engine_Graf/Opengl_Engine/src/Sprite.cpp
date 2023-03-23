@@ -73,9 +73,9 @@ void Sprite::initSprite()
 
 	_ib = new IndexBuffer(indices, 6);
 
-	shaderType = ShaderType::whithTexture;
+	_shaderType = ShaderType::whithTexture;
 
-	_shader = new Shader(shaderType);
+	_shader = new Shader(_shaderType);
 
 	_va->Unbind();
 	_vb->UnBind();

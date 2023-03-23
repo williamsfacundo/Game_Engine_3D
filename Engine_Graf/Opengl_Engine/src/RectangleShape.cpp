@@ -16,9 +16,9 @@ DllExport RectangleShape::RectangleShape(glm::vec3 initialPosition) : Shape(init
 
 	_ib = new IndexBuffer(indices, 6);
 
-	shaderType = ShaderType::noTexture;
+	_shaderType = ShaderType::noTexture;
 
-	_shader = new Shader(shaderType);
+	_shader = new Shader(_shaderType);
 	_shader->Bind();
 	_shader->SetUniforms4f("u_Color", 1.0f, 1.0f, 1.0f, 1.0f);
 
