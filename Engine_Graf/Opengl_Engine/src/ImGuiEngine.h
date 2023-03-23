@@ -11,7 +11,6 @@
 class ImGuiEngine
 {
 private:
-
 	glm::vec3 traslation;
 	glm::vec3 rotation;
 	glm::vec3 scale;
@@ -21,9 +20,7 @@ private:
 	static ImGuiEngine* S_ImGuiEngine;
 	DllExport ImGuiEngine();
 
-
 public:
-
 	DllExport static ImGuiEngine* getImGuiEngine();
 
 	DllExport ~ImGuiEngine();

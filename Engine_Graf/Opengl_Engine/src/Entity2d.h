@@ -12,16 +12,15 @@
 class Entity2d : public Entity
 {
 protected:
-
 	VertexArray* _va;
 
 	VertexBuffer* _vb;
 	
-	VertexBufferLayout* layout;
+	VertexBufferLayout* _layout;
 	
 	IndexBuffer* _ib;
 	
-	Shader* shader;
+	Shader* _shader;
 
 	ShaderType shaderType;
 
@@ -31,7 +30,6 @@ protected:
 	DllExport virtual void  setIndixs() = 0;
 
 public:
-
 	DllExport Entity2d(glm::vec3 initialPosition);
 	DllExport ~Entity2d();
 

@@ -8,18 +8,18 @@ DllExport TriangleShape::TriangleShape(glm::vec4 RGBA, glm::vec3 initialPosition
 	_va = new VertexArray();
 	_vb = new VertexBuffer(positions, 4 * 4 * sizeof(float));
 
-	layout = new VertexBufferLayout();
-	layout->Push<float>(2);		 //Video: Buffer Layout Abstraction in OpenGL - min 27.30 Explica mas cosas qe se pueden hacer
-	_va->AddBuffer(*_vb, layout);
+	_layout = new VertexBufferLayout();
+	_layout->Push<float>(2);		 //Video: Buffer Layout Abstraction in OpenGL - min 27.30 Explica mas cosas qe se pueden hacer
+	_va->AddBuffer(*_vb, _layout);
 	_va->Bind();
 
 	_ib = new IndexBuffer(indices, 3);
 
 	shaderType = ShaderType::noTexture;
 
-	shader = new Shader(shaderType);
-	shader->Bind();
-	shader->SetUniforms4f("u_Color", RGBA.x, RGBA.y, RGBA.z, RGBA.w);
+	_shader = new Shader(shaderType);
+	_shader->Bind();
+	_shader->SetUniforms4f("u_Color", RGBA.x, RGBA.y, RGBA.z, RGBA.w);
 
 	//texture = new Texture("res/textures/Logo.jpg");
 	//texture->Bind();
@@ -28,7 +28,7 @@ DllExport TriangleShape::TriangleShape(glm::vec4 RGBA, glm::vec3 initialPosition
 	_va->Unbind();
 	_vb->UnBind();
 	_ib->UnBind();
-	shader->Unbind();
+	_shader->Unbind();
 }
 
 DllExport void TriangleShape::setVertices()

@@ -64,18 +64,18 @@ void Sprite::initSprite()
 	_va = new VertexArray();
 	_vb = new VertexBuffer(positions, 4 * 4 * sizeof(float));
 
-	layout = new VertexBufferLayout();
-	layout->Push<float>(2);		 
-	layout->Push<float>(2);
+	_layout = new VertexBufferLayout();
+	_layout->Push<float>(2);		 
+	_layout->Push<float>(2);
 
-	_va->AddBuffer(*_vb, layout);
+	_va->AddBuffer(*_vb, _layout);
 	_va->Bind();
 
 	_ib = new IndexBuffer(indices, 6);
 
 	shaderType = ShaderType::whithTexture;
 
-	shader = new Shader(shaderType);
+	_shader = new Shader(shaderType);
 
 	_va->Unbind();
 	_vb->UnBind();
@@ -97,11 +97,11 @@ void Sprite::setTexture(std::string imageName)
 
 	_texture->Bind();
 
-	shader->Bind();
+	_shader->Bind();
 
-	shader->SetUniforms1i("u_Texture", 0);
+	_shader->SetUniforms1i("u_Texture", 0);
 
-	shader->Unbind();
+	_shader->Unbind();
 }
 
 void Sprite::drawTexture()

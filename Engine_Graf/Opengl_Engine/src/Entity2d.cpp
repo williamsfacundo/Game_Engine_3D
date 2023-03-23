@@ -6,9 +6,9 @@ DllExport Entity2d::Entity2d(glm::vec3 initialPosition) : Entity(initialPosition
 {
 	_va = NULL;
 	_vb = NULL;
-	layout = NULL;
+	_layout = NULL;
 	_ib = NULL;
-	shader = NULL;
+	_shader = NULL;
 	shaderType = ShaderType::noTexture; 
 	vertices[0] = glm::vec3();
 	vertices[1] = glm::vec3();
@@ -20,9 +20,9 @@ DllExport Entity2d::~Entity2d()
 {
 	delete _va;
 	delete _vb;
-	delete layout;
+	delete _layout;
 	delete _ib;
-	delete shader;
+	delete _shader;
 }
 
 DllExport glm::vec3* Entity2d::getVertices()
@@ -36,8 +36,8 @@ DllExport void Entity2d::draw()
 
 	glm::mat4 mvp = Renderer::getRenderer()->getProjectionMatrix() * Renderer::getRenderer()->getRenderer()->getViewMatrix() * getModelMatrix();
 
-	shader->Bind();
-	shader->SetUniformsMat4f("u_MVP", mvp);
+	_shader->Bind();
+	_shader->SetUniformsMat4f("u_MVP", mvp);
 
-	Renderer::getRenderer()->Draw(_va, _ib, shader);
+	Renderer::getRenderer()->Draw(_va, _ib, _shader);
 }
