@@ -27,7 +27,7 @@ DllExport void Entity2d::draw()
 {
 	ImGuiEngine::getImGuiEngine()->imGuiDrawObject(this, getLocalId());
 
-	glm::mat4 mvp = Renderer::getRenderer()->getProjectionMatrix() * Renderer::getRenderer()->getRenderer()->getViewMatrix() * TRS;
+	glm::mat4 mvp = Renderer::getRenderer()->getProjectionMatrix() * Renderer::getRenderer()->getRenderer()->getViewMatrix() * getModelMatrix();
 
 	shader->Bind();
 	shader->SetUniformsMat4f("u_MVP", mvp);

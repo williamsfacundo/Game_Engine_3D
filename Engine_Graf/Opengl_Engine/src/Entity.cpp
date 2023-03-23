@@ -8,6 +8,8 @@ DllExport Entity::Entity(glm::vec3 initialPosition)
 	
 	entitiesCount++;
 
+	_modelMatrix = glm::mat4();
+
 	translation = initialPosition;
 	rotation = glm::vec3(0, 0, 0);
 	scale = glm::vec3(1, 1, 0);
@@ -32,7 +34,7 @@ DllExport void Entity::UpdateTRSMat()
 
 	glm::mat4 rot = rotX * rotY * rotZ;
 
-	TRS = tras * rot * sca;
+	_modelMatrix = tras * rot * sca;
 }
 
 DllExport void Entity::addPosition(glm::vec3 positionToAdd)
@@ -198,4 +200,9 @@ DllExport float Entity::getRotationZ()
 DllExport int Entity::getLocalId()
 {
 	return _localId;
+}
+
+DllExport glm::mat4 Entity::getModelMatrix()
+{
+	return _modelMatrix;
 }

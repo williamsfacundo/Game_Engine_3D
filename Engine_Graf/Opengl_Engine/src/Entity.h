@@ -12,15 +12,16 @@ class Entity
 private:	
 	static int entitiesCount;
 	
+	int _localId;
+	
 	glm::vec3 translation;
 	glm::vec3 rotation;
 	glm::vec3 scale;
 
-	int _localId;
+	glm::mat4 _modelMatrix;
 
 protected:
-	
-	glm::mat4 TRS = glm::mat4(1);
+	DllExport glm::mat4 getModelMatrix();
 
 public:
 	DllExport Entity(glm::vec3 initialPosition);
