@@ -8,8 +8,8 @@ DllExport TriangleShape::TriangleShape(glm::vec4 RGBA, glm::vec3 initialPosition
 	_va = new VertexArray();
 	_vb = new VertexBuffer(positions, 4 * 4 * sizeof(float));
 
-	layout = VertexBufferLayout();
-	layout.Push<float>(2);		 //Video: Buffer Layout Abstraction in OpenGL - min 27.30 Explica mas cosas qe se pueden hacer
+	layout = new VertexBufferLayout();
+	layout->Push<float>(2);		 //Video: Buffer Layout Abstraction in OpenGL - min 27.30 Explica mas cosas qe se pueden hacer
 	_va->AddBuffer(*_vb, layout);
 	_va->Bind();
 

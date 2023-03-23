@@ -2,7 +2,6 @@
 #define ENTITY2D_H
 
 #include"entity.h"
-
 #include "VertexArray.h"
 #include "IndexBuffer.h"
 #include "VertexBufferLayout.h"
@@ -15,9 +14,13 @@ class Entity2d : public Entity
 protected:
 
 	VertexArray* _va;
+
 	VertexBuffer* _vb;
-	VertexBufferLayout layout;
+	
+	VertexBufferLayout* layout;
+	
 	IndexBuffer* _ib;
+	
 	Shader* shader;
 
 	ShaderType shaderType;

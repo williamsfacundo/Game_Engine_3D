@@ -64,9 +64,9 @@ void Sprite::initSprite()
 	_va = new VertexArray();
 	_vb = new VertexBuffer(positions, 4 * 4 * sizeof(float));
 
-	layout = VertexBufferLayout();
-	layout.Push<float>(2);		 
-	layout.Push<float>(2);
+	layout = new VertexBufferLayout();
+	layout->Push<float>(2);		 
+	layout->Push<float>(2);
 
 	_va->AddBuffer(*_vb, layout);
 	_va->Bind();

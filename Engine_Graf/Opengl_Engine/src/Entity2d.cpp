@@ -6,14 +6,21 @@ DllExport Entity2d::Entity2d(glm::vec3 initialPosition) : Entity(initialPosition
 {
 	_va = NULL;
 	_vb = NULL;
+	layout = NULL;
 	_ib = NULL;
 	shader = NULL;
+	shaderType = ShaderType::noTexture; 
+	vertices[0] = glm::vec3();
+	vertices[1] = glm::vec3();
+	vertices[2] = glm::vec3();
+	vertices[3] = glm::vec3();
 }
 
 DllExport Entity2d::~Entity2d()
 {
 	delete _va;
 	delete _vb;
+	delete layout;
 	delete _ib;
 	delete shader;
 }
