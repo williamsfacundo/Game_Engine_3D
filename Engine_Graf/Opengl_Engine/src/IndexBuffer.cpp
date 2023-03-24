@@ -1,6 +1,7 @@
 #include "IndexBuffer.h"
 
 #include "Renderer.h"
+#include "MyAssert.h"
 
 DllExport IndexBuffer::IndexBuffer(const unsigned* data, unsigned int count) : _count(count)
 {

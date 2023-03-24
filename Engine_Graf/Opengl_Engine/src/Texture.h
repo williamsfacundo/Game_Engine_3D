@@ -4,6 +4,7 @@
 #include "Renderer.h"
 
 #include "stb_image/stb_image.h"
+#include "MyAssert.h"
 
 class Texture
 {

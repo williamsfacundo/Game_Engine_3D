@@ -1,6 +1,7 @@
 
 #include "VertexBuffer.h"
 #include "Renderer.h"
+#include "MyAssert.h"
 
 
 DllExport VertexBuffer::VertexBuffer(const void* data, unsigned int size)

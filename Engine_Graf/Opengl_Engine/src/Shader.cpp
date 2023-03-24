@@ -6,6 +6,7 @@
 #include <sstream>
 
 #include "Renderer.h"
+#include "MyAssert.h"
 
 DllExport Shader::Shader(ShaderType shaderType)
 {
@@ -75,51 +76,6 @@ DllExport unsigned int Shader::GetUniformLocation(const std::string& name)
 	return location;
 }
 
-
-
-/*ShaderProgramSource Shader::ParseShader(const std::string& filepath)
-{
-	std::ifstream stream(filepath);
-
-	enum class ShaderType
-	{
-		NONE = -1, VERTEX = 0, FRAGMENT = 1
-	};
-
-	const int bufferSize = 1024;
-	char charLine[bufferSize];
-
-	std::string line;
-	std::stringstream ss[2];
-	ShaderType type = ShaderType::NONE;
-
-	while (!stream.eof())
-	{
-		stream.getline(charLine, 1024);
-		line += (std::string)charLine;
-
-		if (line.find("#shader") != std::string::npos)
-		{
-			if (line.find("vertex") != std::string::npos)
-			{
-				type = ShaderType::VERTEX;
-			}
-			else if (line.find("fragment") != std::string::npos)
-			{
-				type = ShaderType::FRAGMENT;
-			}
-		}
-		else
-		{
-			ss[(int)type] << line << '\n';
-		}
-	}
-
-	return { ss[0].str(), ss[1].str() };
-
-}*/
-
-
 DllExport unsigned int Shader::CompileShader(unsigned int type, const std::string& source)
 {
 	GLCall(unsigned int id = glCreateShader(type));
@@ -142,10 +98,8 @@ DllExport unsigned int Shader::CompileShader(unsigned int type, const std::strin
 		return 0;
 	}
 
-	return id;
-	//Terminar
+	return id;	
 }
-
 
 DllExport unsigned int Shader::CreateShader(const std::string& vertexShader, const std::string& fragmentShader)
 {
@@ -163,4 +117,3 @@ DllExport unsigned int Shader::CreateShader(const std::string& vertexShader, con
 
 	return program;
 }
-

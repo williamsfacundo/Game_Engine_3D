@@ -3,6 +3,7 @@
 
 #include <vector>
 #include "Renderer.h"
+#include "MyAssert.h"
 
 struct VertexbufferElement
 {
