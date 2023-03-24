@@ -11,8 +11,8 @@
 class Window
 {
 private:
-	static const int WindowWidth = 1080;
-	static const int WindowHeight = 720;
+	static const int WindowWidth = 960;
+	static const int WindowHeight = 960;
 
 	const char* WindowName = "WILLIAMS";
 	
