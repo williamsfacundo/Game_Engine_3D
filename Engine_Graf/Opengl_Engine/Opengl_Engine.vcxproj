@@ -162,7 +162,6 @@
     <ClCompile Include="src\CollisionManager.cpp" />
     <ClCompile Include="src\Entity.cpp" />
     <ClCompile Include="src\Entity2d.cpp" />
-    <ClCompile Include="src\Frame.cpp" />
     <ClCompile Include="src\ImGuiEngine.cpp" />
     <ClCompile Include="src\IndexBuffer.cpp" />
     <ClCompile Include="src\Input.cpp" />
@@ -190,7 +189,6 @@
     <ClInclude Include="src\DDLExport.h" />
     <ClInclude Include="src\Entity.h" />
     <ClInclude Include="src\Entity2d.h" />
-    <ClInclude Include="src\Frame.h" />
     <ClInclude Include="src\ImGuiEngine.h" />
     <ClInclude Include="src\IndexBuffer.h" />
     <ClInclude Include="src\Input.h" />
