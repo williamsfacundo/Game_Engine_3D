@@ -1,20 +1,22 @@
-#pragma once
+#ifndef INDEX_BUFFER_H
+#define INDEX_BUFFER_H
 
 #include "DDLExport.h"
 
 class IndexBuffer
-	{
-	private:
-		unsigned int m_RendererID;
-		unsigned int m_Count;
+{
+private:
+	unsigned int _rendererID;
+	unsigned int _count;
 
-	public:
-		DllExport IndexBuffer(const unsigned* data, unsigned int count); //Video: Abstracing OPENGL into Classes - Min: 14.43
-		DllExport ~IndexBuffer();
+public:
+	DllExport IndexBuffer(const unsigned* data, unsigned int count); //Video: Abstracing OPENGL into Classes - Min: 14.43
+	DllExport ~IndexBuffer();
 
-		DllExport void Bind() const;
-		DllExport void UnBind() const;
+	DllExport void Bind();
+	DllExport void UnBind();
 
-		DllExport inline unsigned int GetCount() const { return m_Count; }
-	};
+	DllExport unsigned int GetCount();
+};
 
+#endif

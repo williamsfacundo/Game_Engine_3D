@@ -61,20 +61,20 @@ DllExport glm::mat4 Renderer::getViewMatrix()
 	return _viewMatrix;
 }
 
-DllExport void Renderer::Clear()
-{
-	GLCall(glClear(GL_COLOR_BUFFER_BIT));
-}
-
-DllExport void Renderer::Draw(const VertexArray* va, const IndexBuffer* ib, const Shader* shader)
+DllExport void Renderer::Draw(VertexArray* va, IndexBuffer* ib, Shader* shader)
 {
 	shader->Bind();
 	va->Bind();	
-	ib->Bind();
+	ib->Bind();	
 
 	GLCall(glDrawElements(GL_TRIANGLES, ib->GetCount(), GL_UNSIGNED_INT, NULL));
 
 	shader->Unbind();
 	va->Unbind();
 	ib->UnBind();
+}
+
+DllExport void Renderer::Clear()
+{
+	GLCall(glClear(GL_COLOR_BUFFER_BIT));
 }
