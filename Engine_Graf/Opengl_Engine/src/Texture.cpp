@@ -49,14 +49,14 @@ DllExport int Texture::getHeight()
 	return _height;
 }
 
-DllExport void Texture::bind(unsigned int slot) const
+DllExport void Texture::bind(unsigned int slot)
 {
 	GLCall(glActiveTexture(GL_TEXTURE0 + slot));
 
 	GLCall(glBindTexture(GL_TEXTURE_2D, _textureId));
 }
 
-DllExport void Texture::unbind() const
+DllExport void Texture::unbind()
 {
 	GLCall(glBindTexture(GL_TEXTURE_2D, 0));
 }

@@ -28,8 +28,8 @@ public:
 	DllExport int getWidth();
 	DllExport int getHeight();
 
-	DllExport void bind(unsigned int slot = 0) const;
-	DllExport void unbind() const;
+	DllExport void bind(unsigned int slot);
+	DllExport void unbind();
 };
 
 #endif

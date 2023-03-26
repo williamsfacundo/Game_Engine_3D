@@ -95,7 +95,7 @@ void Sprite::setTexture(std::string imageName)
 		_texture = new Texture("res/textures/" + imageName);
 	}
 
-	_texture->bind();
+	_texture->bind(0);
 
 	_shader->Bind();
 
@@ -108,7 +108,7 @@ void Sprite::setTexture(std::string imageName)
 
 void Sprite::drawTexture()
 {
-	_texture->bind();
+	_texture->bind(0);
 
 	draw();
 
