@@ -4,8 +4,8 @@ Timer* Timer::_timer = NULL;
 
 Timer::Timer()
 {
-	deltaTime = 0.0f;
-	oldTime = 0.0f;
+	_deltaTime = 0.0f;
+	_oldTime = 0.0f;
 }
 
 Timer::~Timer()
@@ -25,11 +25,11 @@ DllExport Timer* Timer::getTimer()
 
 DllExport double Timer::timeBetweenFrames()
 {
-	return deltaTime;
+	return _deltaTime;
 }
 
 DllExport void Timer::updateDeltaTime()
 {
-	deltaTime = glfwGetTime() - oldTime;
-	oldTime = glfwGetTime();
+	_deltaTime = glfwGetTime() - _oldTime;
+	_oldTime = glfwGetTime();
 }

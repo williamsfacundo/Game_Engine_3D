@@ -10,8 +10,8 @@ class Timer
 private:
 	static Timer* _timer;
 	
-	double deltaTime;
-	double oldTime;
+	double _deltaTime;
+	double _oldTime;
 
 	DllExport Timer();
 

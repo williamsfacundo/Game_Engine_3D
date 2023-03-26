@@ -25,7 +25,7 @@ DllExport TriangleShape::TriangleShape(glm::vec4 RGBA, glm::vec3 initialPosition
 	_va->unbind();
 	_vb->unbind();
 	_ib->UnBind();
-	_shader->Unbind();	
+	_shader->Unbind();
 }
 
 DllExport void TriangleShape::setVertices()
