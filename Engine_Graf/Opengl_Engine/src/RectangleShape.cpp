@@ -24,7 +24,7 @@ DllExport RectangleShape::RectangleShape(glm::vec3 initialPosition) : Shape(init
 
 	_va->unbind();
 	_vb->unbind();
-	_ib->UnBind();
+	_ib->unbind();
 	_shader->Unbind();
 }
 

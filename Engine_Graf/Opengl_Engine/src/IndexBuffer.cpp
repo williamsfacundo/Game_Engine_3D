@@ -19,17 +19,17 @@ DllExport IndexBuffer::~IndexBuffer()
 	GLCall(glDeleteBuffers(1, &_rendererID));
 }
 
-DllExport void IndexBuffer::Bind()
+DllExport void IndexBuffer::bind()
 {
 	GLCall(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _rendererID));
 }
 
-DllExport void IndexBuffer::UnBind()
+DllExport void IndexBuffer::unbind()
 {
 	GLCall(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0));
 }
 
-DllExport unsigned int IndexBuffer::GetCount()
+DllExport unsigned int IndexBuffer::getCount()
 {
 	return _count;
 }

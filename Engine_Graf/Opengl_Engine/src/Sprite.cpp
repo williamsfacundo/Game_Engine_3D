@@ -63,7 +63,7 @@ void Sprite::initSprite()
 	
 	_va->bind();	
 	_vb->bind();
-	_ib->Bind();
+	_ib->bind();
 	_shader->Bind();
 
 	_layout->Push<float>(2);		 
@@ -73,7 +73,7 @@ void Sprite::initSprite()
 
 	_va->unbind();
 	_vb->unbind();
-	_ib->UnBind();
+	_ib->unbind();
 	_shader->Unbind();
 }
 

@@ -10,13 +10,13 @@ private:
 	unsigned int _count;
 
 public:
-	DllExport IndexBuffer(const unsigned* data, unsigned int count); //Video: Abstracing OPENGL into Classes - Min: 14.43
+	DllExport IndexBuffer(const unsigned* data, unsigned int count);
 	DllExport ~IndexBuffer();
 
-	DllExport void Bind();
-	DllExport void UnBind();
+	DllExport void bind();
+	DllExport void unbind();
 
-	DllExport unsigned int GetCount();
+	DllExport unsigned int getCount();
 };
 
 #endif

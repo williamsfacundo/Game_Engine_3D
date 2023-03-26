@@ -44,13 +44,13 @@ DllExport void Renderer::Draw(VertexArray* va, IndexBuffer* ib, Shader* shader)
 {
 	shader->Bind();
 	va->bind();	
-	ib->Bind();	
+	ib->bind();	
 
-	GLCall(glDrawElements(GL_TRIANGLES, ib->GetCount(), GL_UNSIGNED_INT, NULL));
+	GLCall(glDrawElements(GL_TRIANGLES, ib->getCount(), GL_UNSIGNED_INT, NULL));
 
 	shader->Unbind();
 	va->unbind();
-	ib->UnBind();
+	ib->unbind();
 }
 
 DllExport void Renderer::Clear()

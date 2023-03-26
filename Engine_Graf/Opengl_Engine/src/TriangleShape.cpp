@@ -24,7 +24,7 @@ DllExport TriangleShape::TriangleShape(glm::vec4 RGBA, glm::vec3 initialPosition
 
 	_va->unbind();
 	_vb->unbind();
-	_ib->UnBind();
+	_ib->unbind();
 	_shader->Unbind();
 }
 
