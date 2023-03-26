@@ -45,7 +45,7 @@ DllExport void ImGuiEngine::imGuiDrawObject(Entity2d* entity2d, int index)
 
 	if (ImGui::CollapsingHeader("Entity" + index))
 	{
-		ImGui::SliderFloat2("Translation", &_traslation.x, 0.0f, static_cast<float>(Window::GetScreenWidth())); // Al nombre de los sliders si agregas + index se soluciona un problema con multiples entidades
+		ImGui::SliderFloat2("Translation", &_traslation.x, 0.0f, static_cast<float>(Window::getScreenWidth())); // Al nombre de los sliders si agregas + index se soluciona un problema con multiples entidades
 		ImGui::DragFloat("Rotation", &_rotation.z, 1.0f, 0.0f, 360.0f);
 		ImGui::DragFloat2("Scale", &_scale.x, 0.1f, 0.0f, 10.0f);
 	}

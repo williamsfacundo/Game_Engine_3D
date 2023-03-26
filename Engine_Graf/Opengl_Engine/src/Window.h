@@ -33,8 +33,8 @@ public:
 
 	DllExport GLFWwindow* getNativeWindow();
 
-	DllExport static int GetScreenWidth();
-	DllExport static int GetScreenHeight();
+	DllExport static int getScreenWidth();
+	DllExport static int getScreenHeight();
 
 	DllExport bool getWindowsShouldClose();
 };

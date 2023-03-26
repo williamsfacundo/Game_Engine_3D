@@ -62,12 +62,12 @@ DllExport GLFWwindow* Window::getNativeWindow()
 	return _glfwWindow;
 }
 	
-DllExport int Window::GetScreenWidth()
+DllExport int Window::getScreenWidth()
 {
 	return WindowWidth;
 }
 
-DllExport int Window::GetScreenHeight()
+DllExport int Window::getScreenHeight()
 {
 	return WindowHeight;
 }

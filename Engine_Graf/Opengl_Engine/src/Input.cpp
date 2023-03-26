@@ -35,5 +35,5 @@ DllExport glm::vec2 Input::getMousePositionImpl()
 	Window* window = Window::getWindow();
 	glfwGetCursorPos(window->getNativeWindow(), &xPos, &yPos);
 
-	return glm::vec2((float)xPos, (float)yPos - window->GetScreenHeight());
+	return glm::vec2((float)xPos, (float)yPos - window->getScreenHeight());
 }
