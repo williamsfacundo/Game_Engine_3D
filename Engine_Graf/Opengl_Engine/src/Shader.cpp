@@ -61,32 +61,45 @@ DllExport unsigned int Shader::getUniformLocation(string& name)
 	}
 
 	GLCall(int location = glGetUniformLocation(_shaderId, name.c_str()));
+
 	if (location == -1)
+	{
 		cout << "Warning: uniform " << name << " doesn't exist!" << endl;
+	}
 
 	_uniformLocationCache[name] = location;
+
 	return location;
 }
 
 DllExport unsigned int Shader::compileShader(unsigned int type, string& source)
 {
 	GLCall(unsigned int id = glCreateShader(type));
+
 	const char* src = source.c_str();
+	
 	GLCall(glShaderSource(id, 1, &src, nullptr));
+	
 	GLCall(glCompileShader(id));
 
 	int result;
+	
 	GLCall(glGetShaderiv(id, GL_COMPILE_STATUS, &result));
 
 	if (result == GL_FALSE)
 	{
 		int length;
 		GLCall(glGetShaderiv(id, GL_INFO_LOG_LENGTH, &length));
+
 		char* message = (char*)alloca(length * sizeof(char));
 		GLCall(glGetShaderInfoLog(id, length, &length, message));
+		
 		cout << "Failed to compile " << (type == GL_VERTEX_SHADER ? "vertex" : "fragment") << " shader!" << endl;
+		
 		cout << message << std::endl;
+		
 		GLCall(glDeleteShader(id));
+		
 		return 0;
 	}
 

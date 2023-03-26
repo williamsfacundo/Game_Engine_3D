@@ -31,7 +31,9 @@ DllExport RectangleShape::RectangleShape(glm::vec3 initialPosition) : Shape(init
 DllExport void RectangleShape::setColor(glm::vec4 RGBA)
 {
 	_shader->bind();
+
 	_shader->setUniforms4f("u_Color", RGBA.x, RGBA.y, RGBA.z, RGBA.w);
+
 	_shader->unbind();
 }
 
