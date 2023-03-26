@@ -1,82 +1,74 @@
 #include "Shader.h"
 
-#include <iostream>
-#include <fstream>
-#include <string>
-#include <sstream>
-
 #include "Renderer.h"
-#include "MyAssert.h"
 
 DllExport Shader::Shader(ShaderType shaderType)
 {
-	m_RendererID = 0;
-	ShaderProgramSource source;// = ParseShader("filepath");
-	source.VertexSource = vertexShader;
+	_shaderId = 0;
+		
 	if (shaderType == ShaderType::whithTexture)
 	{
-		source.FragmentSource = fragmentShaderWithTexture;
+		_fragmentSource = fragmentShaderWithTexture;
 	}
 	else if (shaderType == ShaderType::noTexture)
 	{
-		source.FragmentSource = fragmentShaderNoTexture;
+		_fragmentSource = fragmentShaderNoTexture;
 	}
 
-	m_RendererID = CreateShader(source.VertexSource, source.FragmentSource);
+	_shaderId = createShader(vertexShader, _fragmentSource);
 }
 
 DllExport Shader::~Shader()
 {
-	GLCall(glDeleteProgram(m_RendererID));
+	GLCall(glDeleteProgram(_shaderId));
 }
 
-DllExport void Shader::Bind() const
+DllExport void Shader::bind()
 {
-	GLCall(glUseProgram(m_RendererID));
+	GLCall(glUseProgram(_shaderId));
 }
 
-DllExport void Shader::Unbind() const
+DllExport void Shader::unbind()
 {
 	GLCall(glUseProgram(0));
 }
 
-DllExport void Shader::SetUniforms4f(const std::string name, float v0, float v1, float v2, float v3)
+DllExport void Shader::setUniforms4f(string name, float v0, float v1, float v2, float v3)
 {
-	GLCall(glUniform4f(GetUniformLocation(name), v0, v1, v2, v3));
+	GLCall(glUniform4f(getUniformLocation(name), v0, v1, v2, v3));
 }
 
-DllExport void Shader::SetUniformsMat4f(const std::string name, const glm::mat4& matrix)
+DllExport void Shader::setUniformsMat4f(string name, mat4& matrix)
 {
-	GLCall(glUniformMatrix4fv(GetUniformLocation(name), 1, GL_FALSE, &matrix[0][0]));
+	GLCall(glUniformMatrix4fv(getUniformLocation(name), 1, GL_FALSE, &matrix[0][0]));
 }
 
-DllExport void Shader::SetUniforms1f(const std::string name, float value)
+DllExport void Shader::setUniforms1f(string name, float value)
 {
-	GLCall(glUniform1f(GetUniformLocation(name), value));
+	GLCall(glUniform1f(getUniformLocation(name), value));
 }
 
-DllExport void Shader::SetUniforms1i(const std::string name, int value)
+DllExport void Shader::setUniforms1i(string name, int value)
 {
-	GLCall(glUniform1i(GetUniformLocation(name), value));
-
+	GLCall(glUniform1i(getUniformLocation(name), value));
 }
 
-DllExport unsigned int Shader::GetUniformLocation(const std::string& name)
+DllExport unsigned int Shader::getUniformLocation(string& name)
 {
-	if (m_UniformLocationCache.find(name) != m_UniformLocationCache.end())
+	if (_uniformLocationCache.find(name) != _uniformLocationCache.end())
 	{
-		return m_UniformLocationCache[name];
+		return _uniformLocationCache[name];
 	}
 
-	GLCall(int location = glGetUniformLocation(m_RendererID, name.c_str()));
+	GLCall(int location = glGetUniformLocation(_shaderId, name.c_str()));
 	if (location == -1)
-		std::cout << "Warning: uniform " << name << " doesn't exist!" << std::endl;
+		cout << "Warning: uniform " << name << " doesn't exist!" << endl;
 
-	m_UniformLocationCache[name] = location;
+	_uniformLocationCache[name] = location;
 	return location;
 }
 
-DllExport unsigned int Shader::CompileShader(unsigned int type, const std::string& source)
+DllExport unsigned int Shader::compileShader(unsigned int type, string& source)
 {
 	GLCall(unsigned int id = glCreateShader(type));
 	const char* src = source.c_str();
@@ -92,8 +84,8 @@ DllExport unsigned int Shader::CompileShader(unsigned int type, const std::strin
 		GLCall(glGetShaderiv(id, GL_INFO_LOG_LENGTH, &length));
 		char* message = (char*)alloca(length * sizeof(char));
 		GLCall(glGetShaderInfoLog(id, length, &length, message));
-		std::cout << "Failed to compile " << (type == GL_VERTEX_SHADER ? "vertex" : "fragment") << " shader!" << std::endl;
-		std::cout << message << std::endl;
+		cout << "Failed to compile " << (type == GL_VERTEX_SHADER ? "vertex" : "fragment") << " shader!" << endl;
+		cout << message << std::endl;
 		GLCall(glDeleteShader(id));
 		return 0;
 	}
@@ -101,11 +93,12 @@ DllExport unsigned int Shader::CompileShader(unsigned int type, const std::strin
 	return id;	
 }
 
-DllExport unsigned int Shader::CreateShader(const std::string& vertexShader, const std::string& fragmentShader)
+DllExport unsigned int Shader::createShader(string& vertexShader, string& fragmentShader)
 {
 	GLCall(unsigned int program = glCreateProgram());
-	unsigned int vs = CompileShader(GL_VERTEX_SHADER, vertexShader);
-	unsigned int fs = CompileShader(GL_FRAGMENT_SHADER, fragmentShader);
+	
+	unsigned int vs = compileShader(GL_VERTEX_SHADER, vertexShader);
+	unsigned int fs = compileShader(GL_FRAGMENT_SHADER, fragmentShader);
 
 	GLCall(glAttachShader(program, vs));
 	GLCall(glAttachShader(program, fs));

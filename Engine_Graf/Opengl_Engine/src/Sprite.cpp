@@ -64,7 +64,7 @@ void Sprite::initSprite()
 	_va->bind();	
 	_vb->bind();
 	_ib->bind();
-	_shader->Bind();
+	_shader->bind();
 
 	_layout->Push<float>(2);		 
 	_layout->Push<float>(2);
@@ -74,7 +74,7 @@ void Sprite::initSprite()
 	_va->unbind();
 	_vb->unbind();
 	_ib->unbind();
-	_shader->Unbind();
+	_shader->unbind();
 }
 
 void Sprite::setTexture(std::string imageName)
@@ -92,11 +92,11 @@ void Sprite::setTexture(std::string imageName)
 
 	_texture->bind(0);
 
-	_shader->Bind();
+	_shader->bind();
 
-	_shader->SetUniforms1i("u_Texture", 0);
+	_shader->setUniforms1i("u_Texture", 0);
 
-	_shader->Unbind();
+	_shader->unbind();
 
 	_texture->unbind();
 }

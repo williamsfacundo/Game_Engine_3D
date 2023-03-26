@@ -3,26 +3,30 @@
 
 #include <string>
 #include <unordered_map>
-#include "glm/glm.hpp"
-#include "ShaderType.h"
+#include <glm/glm.hpp>
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <sstream>
 
-struct ShaderProgramSource
-{
-	std::string VertexSource;
-	std::string FragmentSource;
-};
+#include "ShaderType.h"
+#include "MyAssert.h"
+
+using namespace std;
+using namespace glm;
 
 class Shader
 {
-private:
-	//std::string m_FilepPath;
-	unsigned int m_RendererID;
-	std::unordered_map<std::string, int> m_UniformLocationCache;
+private:	
+	unsigned int _shaderId;
+
+	unordered_map<string, int> _uniformLocationCache;
+		
+	string _fragmentSource;
 
 #pragma region Shaders
-
-	std::string vertexShader =
-		//"#shader vertex								\n"
+	string vertexShader =
+		//"#shader vertex\n"
 		"#version 330 core\n"
 		"\n"
 		"layout(location = 0) in vec4 position;"
@@ -37,8 +41,8 @@ private:
 		"	v_TexCoord = texCoord;\n"
 		"};\n";
 
-	std::string fragmentShaderWithTexture =
-		//"#shader fragment							\n"
+	string fragmentShaderWithTexture =
+		//"#shader fragment\n"
 		"#version 330 core\n"
 		"\n"
 		"	layout(location = 0) out vec4 color;"
@@ -56,8 +60,8 @@ private:
 		"	color = texColor;"
 		"};\n";
 
-	std::string fragmentShaderNoTexture =
-		//"#shader fragment							\n"
+	string fragmentShaderNoTexture =
+		//"#shader fragment\n"
 		"#version 330 core\n"
 		"\n"
 		"	layout(location = 0) out vec4 color;"
@@ -68,28 +72,23 @@ private:
 		"{\n"
 		"	color = u_Color;"
 		"};\n";
-
-
 #pragma endregion
+
+	DllExport unsigned int createShader(string& vertexShader, string& fragmentShader);
+	DllExport unsigned int compileShader(unsigned int type, string& source);
+	DllExport unsigned int getUniformLocation(string& name);
 
 public:
 	DllExport Shader(ShaderType shaderType);
 	DllExport ~Shader();
 
-	DllExport void Bind() const;
-	DllExport void Unbind() const;
-
-	//Set uniforms
-	DllExport void SetUniforms1f(const std::string name, float value);
-	DllExport void SetUniforms1i(const std::string name, int value);
-	DllExport void SetUniforms4f(const std::string name, float v0, float v1, float v2, float v3);
-	DllExport void SetUniformsMat4f(const std::string name, const glm::mat4& matrix);
-
-private:
-	DllExport unsigned int CreateShader(const std::string& vertexShader, const std::string& fragmentShader);
-	DllExport unsigned int CompileShader(unsigned int type, const std::string& source);
-	DllExport unsigned int GetUniformLocation(const std::string& name);
-	//ShaderProgramSource ParseShader(const std::string& filepath);
+	DllExport void bind();
+	DllExport void unbind();
+	
+	DllExport void setUniforms1f(string name, float value);
+	DllExport void setUniforms1i(string name, int value);
+	DllExport void setUniforms4f(string name, float v0, float v1, float v2, float v3);
+	DllExport void setUniformsMat4f(string name, mat4& matrix);
 };
 
 #endif

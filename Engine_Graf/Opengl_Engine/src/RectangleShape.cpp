@@ -19,20 +19,20 @@ DllExport RectangleShape::RectangleShape(glm::vec3 initialPosition) : Shape(init
 	_shaderType = ShaderType::noTexture;
 
 	_shader = new Shader(_shaderType);
-	_shader->Bind();
-	_shader->SetUniforms4f("u_Color", 1.0f, 1.0f, 1.0f, 1.0f);
+	_shader->bind();
+	_shader->setUniforms4f("u_Color", 1.0f, 1.0f, 1.0f, 1.0f);
 
 	_va->unbind();
 	_vb->unbind();
 	_ib->unbind();
-	_shader->Unbind();
+	_shader->unbind();
 }
 
 DllExport void RectangleShape::setColor(glm::vec4 RGBA)
 {
-	_shader->Bind();
-	_shader->SetUniforms4f("u_Color", RGBA.x, RGBA.y, RGBA.z, RGBA.w);
-	_shader->Unbind();
+	_shader->bind();
+	_shader->setUniforms4f("u_Color", RGBA.x, RGBA.y, RGBA.z, RGBA.w);
+	_shader->unbind();
 }
 
 DllExport void RectangleShape::setVertices()

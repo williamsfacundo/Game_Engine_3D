@@ -38,8 +38,8 @@ DllExport void Entity2d::draw()
 
 	glm::mat4 mvp = Renderer::getRenderer()->getProjectionMatrix() * Renderer::getRenderer()->getRenderer()->getViewMatrix() * getModelMatrix();
 
-	_shader->Bind();
-	_shader->SetUniformsMat4f("u_MVP", mvp);
+	_shader->bind();
+	_shader->setUniformsMat4f("u_MVP", mvp);
 
 	Renderer::getRenderer()->Draw(_va, _ib, _shader);
 }

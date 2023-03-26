@@ -19,13 +19,13 @@ DllExport TriangleShape::TriangleShape(glm::vec4 RGBA, glm::vec3 initialPosition
 	_shaderType = ShaderType::noTexture;
 
 	_shader = new Shader(_shaderType);
-	_shader->Bind();
-	_shader->SetUniforms4f("u_Color", RGBA.x, RGBA.y, RGBA.z, RGBA.w);
+	_shader->bind();
+	_shader->setUniforms4f("u_Color", RGBA.x, RGBA.y, RGBA.z, RGBA.w);
 
 	_va->unbind();
 	_vb->unbind();
 	_ib->unbind();
-	_shader->Unbind();
+	_shader->unbind();
 }
 
 DllExport void TriangleShape::setVertices()
