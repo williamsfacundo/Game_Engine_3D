@@ -7,15 +7,6 @@ DllExport Window::Window()
 	createWindow();
 }
 
-DllExport Window* Window::getWindow()
-{
-	if (_window == NULL)
-	{
-		_window = new Window();
-	}
-
-	return _window;
-}
 
 DllExport Window::~Window()
 {
@@ -57,7 +48,17 @@ DllExport void Window::createWindow()
 	initGlew();
 }
 
-DllExport GLFWwindow* Window::getNativeWindow()
+DllExport Window* Window::getWindow()
+{
+	if (_window == NULL)
+	{
+		_window = new Window();
+	}
+
+	return _window;
+}
+
+DllExport GLFWwindow* Window::getGLFWwindow()
 {
 	return _glfwWindow;
 }
@@ -72,7 +73,7 @@ DllExport int Window::getScreenHeight()
 	return WindowHeight;
 }
 
-DllExport bool Window::getWindowsShouldClose()
+DllExport int Window::getWindowsShouldClose()
 {
-	return static_cast<bool>(glfwWindowShouldClose);
+	return glfwWindowShouldClose(_glfwWindow);
 }

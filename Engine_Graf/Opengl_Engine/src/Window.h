@@ -23,7 +23,6 @@ private:
 	DllExport Window();
 
 public:
-	DllExport static Window* getWindow();
 	DllExport ~Window();
 
 	DllExport int initGlfw();
@@ -31,12 +30,13 @@ public:
 
 	DllExport void createWindow();
 
-	DllExport GLFWwindow* getNativeWindow();
+	DllExport static Window* getWindow();
+	DllExport GLFWwindow* getGLFWwindow();
 
 	DllExport static int getScreenWidth();
 	DllExport static int getScreenHeight();
 
-	DllExport bool getWindowsShouldClose();
+	DllExport int getWindowsShouldClose();
 };
 
 #endif

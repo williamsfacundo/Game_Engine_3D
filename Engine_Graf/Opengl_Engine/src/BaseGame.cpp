@@ -29,8 +29,8 @@ DllExport void BaseGame::runEngine()
 	setBaseGameClases();	
 	
 	init();
-
-	while (_window->getWindowsShouldClose())
+		
+	while (!_window->getWindowsShouldClose())
 	{
 		_renderer->Clear();
 
@@ -46,7 +46,7 @@ DllExport void BaseGame::runEngine()
 
 		_imGuiEngine->imGuiEndDraw();
 		
-		glfwSwapBuffers(_window->getNativeWindow());
+		glfwSwapBuffers(_window->getGLFWwindow());
 		
 		glfwPollEvents();
 	}

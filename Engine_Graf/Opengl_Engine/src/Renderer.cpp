@@ -10,7 +10,7 @@ DllExport Renderer::Renderer()
 
 Renderer::~Renderer()
 {
-	delete _renderer;
+		
 }
 
 DllExport void Renderer::initRenderer()

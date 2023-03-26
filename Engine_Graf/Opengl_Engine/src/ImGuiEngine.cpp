@@ -10,7 +10,7 @@ DllExport ImGuiEngine::ImGuiEngine()
 
 	ImGui::CreateContext();
 		
-	ImGui_ImplGlfwGL3_Init(Window::getWindow()->getNativeWindow(), true);
+	ImGui_ImplGlfwGL3_Init(Window::getWindow()->getGLFWwindow(), true);
 	
 	ImGui::StyleColorsDark();
 }
