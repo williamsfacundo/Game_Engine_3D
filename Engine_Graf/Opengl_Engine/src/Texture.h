@@ -1,34 +1,35 @@
 #ifndef TEXTURE_H
 #define TEXTURE_H
 
-#include "Renderer.h"
+#include <stb_image/stb_image.h>
 
-#include "stb_image/stb_image.h"
+#include "Renderer.h"
 #include "MyAssert.h"
+
+using namespace std;
 
 class Texture
 {
-
 private:
+	unsigned int _textureId;
 
-	unsigned int m_RendererID;
+	unsigned char* _localBuffer;
+	
+	string _filePath;
 
-	std::string m_FilePath;
-
-	unsigned char* m_LocalBuffer;
-
-	int m_Width, m_Height, m_BPP;
+	int _width; 
+	int _height; 
+	int _BPP;
 
 public:
-
-	DllExport Texture(const std::string& path);
+	DllExport Texture(const string& path);
 	DllExport ~Texture();
 
-	DllExport void Bind(unsigned int slot = 0) const;
-	DllExport void UnBind() const;
+	DllExport int getWidth();
+	DllExport int getHeight();
 
-	DllExport inline int GetWidth() const { return m_Width; }
-	DllExport inline int GetHeight() const { return m_Height; }
+	DllExport void bind(unsigned int slot = 0) const;
+	DllExport void unbind() const;
 };
 
 #endif

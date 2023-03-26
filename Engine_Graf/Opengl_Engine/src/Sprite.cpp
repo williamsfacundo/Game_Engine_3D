@@ -95,20 +95,22 @@ void Sprite::setTexture(std::string imageName)
 		_texture = new Texture("res/textures/" + imageName);
 	}
 
-	_texture->Bind();
+	_texture->bind();
 
 	_shader->Bind();
 
 	_shader->SetUniforms1i("u_Texture", 0);
 
 	_shader->Unbind();
+
+	_texture->unbind();
 }
 
 void Sprite::drawTexture()
 {
-	_texture->Bind();
+	_texture->bind();
 
 	draw();
 
-	_texture->UnBind();
+	_texture->unbind();
 }
