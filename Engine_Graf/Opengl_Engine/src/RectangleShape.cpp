@@ -12,7 +12,7 @@ DllExport RectangleShape::RectangleShape(glm::vec3 initialPosition) : Shape(init
 	_layout = new VertexBufferLayout();
 	_layout->Push<float>(2);		 //Video: Buffer Layout Abstraction in OpenGL - min 27.30 Explica mas cosas qe se pueden hacer
 	_va->AddBuffer(*_vb, _layout);
-	_va->Bind();
+	_va->bind();
 
 	_ib = new IndexBuffer(indices, 6);
 
@@ -22,7 +22,7 @@ DllExport RectangleShape::RectangleShape(glm::vec3 initialPosition) : Shape(init
 	_shader->Bind();
 	_shader->SetUniforms4f("u_Color", 1.0f, 1.0f, 1.0f, 1.0f);
 
-	_va->Unbind();
+	_va->unbind();
 	_vb->unbind();
 	_ib->UnBind();
 	_shader->Unbind();

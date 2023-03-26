@@ -11,7 +11,7 @@ DllExport TriangleShape::TriangleShape(glm::vec4 RGBA, glm::vec3 initialPosition
 	_layout = new VertexBufferLayout();
 	_layout->Push<float>(2);		 //Video: Buffer Layout Abstraction in OpenGL - min 27.30 Explica mas cosas qe se pueden hacer
 	_va->AddBuffer(*_vb, _layout);
-	_va->Bind();
+	_va->bind();
 
 	_ib = new IndexBuffer(indices, 3);
 
@@ -25,7 +25,7 @@ DllExport TriangleShape::TriangleShape(glm::vec4 RGBA, glm::vec3 initialPosition
 	//texture->Bind();
 	//shader->SetUniforms1i("u_Texture", 0);
 
-	_va->Unbind();
+	_va->unbind();
 	_vb->unbind();
 	_ib->UnBind();
 	_shader->Unbind();

@@ -69,7 +69,7 @@ void Sprite::initSprite()
 	_layout->Push<float>(2);
 
 	_va->AddBuffer(*_vb, _layout);
-	_va->Bind();
+	_va->bind();
 
 	_ib = new IndexBuffer(indices, 6);
 
@@ -77,7 +77,7 @@ void Sprite::initSprite()
 
 	_shader = new Shader(_shaderType);
 
-	_va->Unbind();
+	_va->unbind();
 	_vb->unbind();
 	_ib->UnBind();
 }

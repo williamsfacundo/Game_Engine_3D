@@ -43,13 +43,13 @@ DllExport glm::mat4 Renderer::getViewMatrix()
 DllExport void Renderer::Draw(VertexArray* va, IndexBuffer* ib, Shader* shader)
 {
 	shader->Bind();
-	va->Bind();	
+	va->bind();	
 	ib->Bind();	
 
 	GLCall(glDrawElements(GL_TRIANGLES, ib->GetCount(), GL_UNSIGNED_INT, NULL));
 
 	shader->Unbind();
-	va->Unbind();
+	va->unbind();
 	ib->UnBind();
 }
 

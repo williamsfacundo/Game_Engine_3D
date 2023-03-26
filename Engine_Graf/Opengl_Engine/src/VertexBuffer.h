@@ -3,10 +3,12 @@
 
 #include "DDLExport.h"
 
+#include "MyAssert.h"
+
 class VertexBuffer
 {
 private:
-	unsigned int _vertexBufferID;
+	unsigned int _vertexBufferId;
 
 public:
 	DllExport VertexBuffer(const void* data, unsigned int size);
