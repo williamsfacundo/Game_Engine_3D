@@ -13,10 +13,10 @@ DllExport VertexArray::~VertexArray()
 	GLCall(glDeleteVertexArrays(1, &m_RendererID));
 }
 
-DllExport void VertexArray::AddBuffer(const VertexBuffer& vb, const VertexBufferLayout* layout)
+DllExport void VertexArray::AddBuffer(VertexBuffer& vb, VertexBufferLayout* layout)
 {
 	Bind();
-	vb.Bind();
+	vb.bind();
 	const auto& elements = layout->GetElements();
 	unsigned int offset = 0;
 

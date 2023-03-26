@@ -17,7 +17,7 @@
 		DllExport ~VertexArray();
 
 
-		DllExport void AddBuffer(const VertexBuffer& vb, const VertexBufferLayout* layout);
+		DllExport void AddBuffer(VertexBuffer& vb, VertexBufferLayout* layout);
 
 		DllExport void Bind() const;
 		DllExport void Unbind() const;

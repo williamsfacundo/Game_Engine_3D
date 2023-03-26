@@ -23,7 +23,7 @@ DllExport RectangleShape::RectangleShape(glm::vec3 initialPosition) : Shape(init
 	_shader->SetUniforms4f("u_Color", 1.0f, 1.0f, 1.0f, 1.0f);
 
 	_va->Unbind();
-	_vb->UnBind();
+	_vb->unbind();
 	_ib->UnBind();
 	_shader->Unbind();
 }

@@ -78,7 +78,7 @@ void Sprite::initSprite()
 	_shader = new Shader(_shaderType);
 
 	_va->Unbind();
-	_vb->UnBind();
+	_vb->unbind();
 	_ib->UnBind();
 }
 
