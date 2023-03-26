@@ -5,26 +5,25 @@ DllExport TriangleShape::TriangleShape(glm::vec4 RGBA, glm::vec3 initialPosition
 	setVertices();
 
 	setIndices();
-
+	
+	_shaderType = ShaderType::noTexture;
+	
 	_va = new VertexArray();
 	_vb = new VertexBuffer(_positions, 4 * 4 * sizeof(float));
-
 	_layout = new VertexBufferLayout();
-	_layout->Push<float>(2);
-	_va->AddBuffer(*_vb, _layout);
-	_va->bind();
-
-	_ib = new IndexBuffer(_indices, 3);
-
-	_shaderType = ShaderType::noTexture;
-
 	_shader = new Shader(_shaderType);
+	_ib = new IndexBuffer(_indices, 3);
+		
+	_va->bind();
 	_shader->bind();
+	
+	_layout->Push<float>(2);
+
+	_va->AddBuffer(*_vb, _layout);
+	
 	_shader->setUniforms4f("u_Color", RGBA.x, RGBA.y, RGBA.z, RGBA.w);
 
 	_va->unbind();
-	_vb->unbind();
-	_ib->unbind();
 	_shader->unbind();
 }
 
@@ -45,4 +44,14 @@ DllExport void TriangleShape::setIndices()
 	_indices[0] = 0;
 	_indices[1] = 1;
 	_indices[2] = 2;
+}
+
+DllExport void TriangleShape::setIndixs()
+{
+	
+}
+
+DllExport void TriangleShape::calculateVertices()
+{
+	
 }

@@ -5,11 +5,13 @@
 #include "Shape.h"
 #include "RectangleShape.h"
 #include "Sprite.h"
+#include "TriangleShape.h"
 
 class Game : public BaseGame
 {
 private:
 	Entity2d* _sprite;
+	TriangleShape* _triangleShape;
 
 public:
 	Game();

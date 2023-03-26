@@ -13,7 +13,10 @@ private:
     DllExport void  setVertices();
     DllExport void  setIndices();
 
-public:
+    DllExport void setIndixs();
+    DllExport void calculateVertices();
+public:    
+
     DllExport TriangleShape(glm::vec4 RGBA, glm::vec3 initialPosition);
 };
 
