@@ -1,10 +1,5 @@
 #include "Sprite.h"
 
-Sprite::Sprite() : Entity2d(glm::vec3(0.0f))
-{
-	initSprite();
-}
-
 Sprite::Sprite(std::string imageName, glm::vec3 initialPosition) : Entity2d(initialPosition)
 {	
 	initSprite();
@@ -22,33 +17,33 @@ void Sprite::setVertices()
 	_width = 100;
 	_height = 100;
 
-	positions[0] = -50.0f;
-	positions[1] = -50.0f;
-	positions[5] = -50.0f;
-	positions[4] = 50.0f;
-	positions[8] = 50.0f;
-	positions[9] = 50.0f;
-	positions[12] = -50.0f;
-	positions[13] = 50.0f;
+	_positions[0] = -50.0f;
+	_positions[1] = -50.0f;
+	_positions[5] = -50.0f;
+	_positions[4] = 50.0f;
+	_positions[8] = 50.0f;
+	_positions[9] = 50.0f;
+	_positions[12] = -50.0f;
+	_positions[13] = 50.0f;
 
-	positions[2] = 0.0f;
-	positions[3] = 0.0f;
-	positions[6] = 1.0f;
-	positions[7] = 0.0f;
-	positions[10] = 1.0f;
-	positions[11] = 1.0f;
-	positions[14] = 0.0f;
-	positions[15] = 1.0f;
+	_positions[2] = 0.0f;
+	_positions[3] = 0.0f;
+	_positions[6] = 1.0f;
+	_positions[7] = 0.0f;
+	_positions[10] = 1.0f;
+	_positions[11] = 1.0f;
+	_positions[14] = 0.0f;
+	_positions[15] = 1.0f;
 }
 
 void Sprite::setIndixs()
 {
-	indices[0] = 0;
-	indices[1] = 1;
-	indices[2] = 2;
-	indices[3] = 2;
-	indices[4] = 3;
-	indices[5] = 0;
+	_indices[0] = 0;
+	_indices[1] = 1;
+	_indices[2] = 2;
+	_indices[3] = 2;
+	_indices[4] = 3;
+	_indices[5] = 0;
 }
 
 void Sprite::calculateVertices()
@@ -61,25 +56,28 @@ void Sprite::initSprite()
 	setVertices();
 	setIndixs();
 
+	_shaderType = ShaderType::whithTexture;
+	
 	_va = new VertexArray();
-	_vb = new VertexBuffer(positions, 4 * 4 * sizeof(float));
-
+	_vb = new VertexBuffer(_positions, 4 * 4 * sizeof(float));
 	_layout = new VertexBufferLayout();
+	_ib = new IndexBuffer(_indices, 6);
+	_shader = new Shader(_shaderType);
+	
+	_va->bind();	
+	_vb->bind();
+	_ib->Bind();
+	_shader->Bind();
+
 	_layout->Push<float>(2);		 
 	_layout->Push<float>(2);
 
 	_va->AddBuffer(*_vb, _layout);
-	_va->bind();
-
-	_ib = new IndexBuffer(indices, 6);
-
-	_shaderType = ShaderType::whithTexture;
-
-	_shader = new Shader(_shaderType);
 
 	_va->unbind();
 	_vb->unbind();
 	_ib->UnBind();
+	_shader->Unbind();
 }
 
 void Sprite::setTexture(std::string imageName)
@@ -92,7 +90,7 @@ void Sprite::setTexture(std::string imageName)
 	{
 		delete _texture;
 
-		_texture = new Texture("res/textures/" + imageName);
+		_texture = new Texture("res/textures/" + imageName);		
 	}
 
 	_texture->bind(0);

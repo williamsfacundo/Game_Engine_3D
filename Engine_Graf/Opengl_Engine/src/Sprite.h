@@ -1,18 +1,21 @@
 #ifndef SPRITE_H
 #define SPRITE_H
 
-#include "Entity2d.h"
 #include <vector>
+
+#include "Entity2d.h"
 
 class Sprite : public Entity2d
 {
 private:
+	unsigned int _indices[6];
+	
 	Texture* _texture;
 
+	float _positions[16];
+	
 	int _width;
 	int _height;
-
-	unsigned int indices[6];
 
 	DllExport void setVertices();
 	DllExport void setIndixs();
@@ -20,11 +23,7 @@ private:
 
 	DllExport void initSprite();
 
-protected:
-	float positions[16];
-
 public:
-	DllExport Sprite();
 	DllExport Sprite(std::string imageName, glm::vec3 initialPosition);
 	DllExport ~Sprite();
 
