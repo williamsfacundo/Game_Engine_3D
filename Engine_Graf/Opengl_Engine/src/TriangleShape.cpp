@@ -3,17 +3,18 @@
 DllExport TriangleShape::TriangleShape(glm::vec4 RGBA, glm::vec3 initialPosition) : Shape(initialPosition)
 {
 	setVertices();
-	setIndixs();
+
+	setIndices();
 
 	_va = new VertexArray();
-	_vb = new VertexBuffer(positions, 4 * 4 * sizeof(float));
+	_vb = new VertexBuffer(_positions, 4 * 4 * sizeof(float));
 
 	_layout = new VertexBufferLayout();
-	_layout->Push<float>(2);		 //Video: Buffer Layout Abstraction in OpenGL - min 27.30 Explica mas cosas qe se pueden hacer
+	_layout->Push<float>(2);
 	_va->AddBuffer(*_vb, _layout);
 	_va->bind();
 
-	_ib = new IndexBuffer(indices, 3);
+	_ib = new IndexBuffer(_indices, 3);
 
 	_shaderType = ShaderType::noTexture;
 
@@ -21,31 +22,27 @@ DllExport TriangleShape::TriangleShape(glm::vec4 RGBA, glm::vec3 initialPosition
 	_shader->Bind();
 	_shader->SetUniforms4f("u_Color", RGBA.x, RGBA.y, RGBA.z, RGBA.w);
 
-	//texture = new Texture("res/textures/Logo.jpg");
-	//texture->Bind();
-	//shader->SetUniforms1i("u_Texture", 0);
-
 	_va->unbind();
 	_vb->unbind();
 	_ib->UnBind();
-	_shader->Unbind();
+	_shader->Unbind();	
 }
 
 DllExport void TriangleShape::setVertices()
 {
-	positions[0] = -50.0f;
-	positions[1] = -50.0f;
+	_positions[0] = -50.0f;
+	_positions[1] = -50.0f;
 	
-	positions[2] = 50.0f;
-	positions[3] = -50.0f;
+	_positions[2] = 50.0f;
+	_positions[3] = -50.0f;
 	
-	positions[4] = 0.0f;
-	positions[5] = 50.0f;
+	_positions[4] = 0.0f;
+	_positions[5] = 50.0f;
 }
 
-DllExport void TriangleShape::setIndixs()
+DllExport void TriangleShape::setIndices()
 {
-	indices[0] = 0;
-	indices[1] = 1;
-	indices[2] = 2;
+	_indices[0] = 0;
+	_indices[1] = 1;
+	_indices[2] = 2;
 }

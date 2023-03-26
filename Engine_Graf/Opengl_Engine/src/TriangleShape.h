@@ -6,11 +6,12 @@
 class TriangleShape : public Shape
 {
 private:
-    float positions[6];
-    unsigned int indices[3];
+    unsigned int _indices[3];
+    
+    float _positions[6];
 
     DllExport void  setVertices();
-    DllExport void  setIndixs();
+    DllExport void  setIndices();
 
 public:
     DllExport TriangleShape(glm::vec4 RGBA, glm::vec3 initialPosition);
