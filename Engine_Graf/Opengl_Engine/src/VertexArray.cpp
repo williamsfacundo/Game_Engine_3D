@@ -16,8 +16,11 @@ DllExport VertexArray::~VertexArray()
 DllExport void VertexArray::AddBuffer(VertexBuffer& vb, VertexBufferLayout* layout)
 {
 	bind();
+
 	vb.bind();
+
 	const auto& elements = layout->GetElements();
+
 	unsigned int offset = 0;
 
 	for (unsigned int i = 0; i < elements.size(); i++)
@@ -27,6 +30,8 @@ DllExport void VertexArray::AddBuffer(VertexBuffer& vb, VertexBufferLayout* layo
 		GLCall(glVertexAttribPointer(i, element.count, element.type, element.normalized, layout->GetStride(), (const void*)offset));
 		offset += element.count * VertexbufferElement::GetSizeOfType(element.type);
 	}
+
+	unbind();
 }
 
 DllExport void VertexArray::bind()
