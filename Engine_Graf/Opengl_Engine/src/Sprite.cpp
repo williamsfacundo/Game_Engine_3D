@@ -14,9 +14,6 @@ Sprite::~Sprite()
 
 void Sprite::setVertices()
 {
-	_width = 100;
-	_height = 100;
-
 	_positions[0] = -50.0f;
 	_positions[1] = -50.0f;
 	_positions[5] = -50.0f;

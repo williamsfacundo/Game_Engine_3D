@@ -12,10 +12,7 @@ private:
 	
 	Texture* _texture;
 
-	float _positions[16];
-	
-	int _width;
-	int _height;
+	float _positions[16];	
 
 	DllExport void setVertices();
 	DllExport void setIndixs();
