@@ -26,12 +26,11 @@ private:
 	glm::mat4 _rotationMatrix;
 	glm::mat4 _scalingMatrix;
 
-	glm::mat4 _modelMatrix;
-
 protected:
 	DllExport glm::mat4 getModelMatrix();
 
 public:
+	glm::mat4 _modelMatrix;
 	DllExport Entity(glm::vec3 initialPosition);
 	DllExport ~Entity();
 

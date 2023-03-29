@@ -22,7 +22,7 @@ void Game::input()
 
 void Game::update()
 {
-
+	_sprite->addRotation(glm::vec3(glm::radians(-10.0f), glm::radians(-10.0f), glm::radians(-10.0f)));
 }
 
 void Game::draw()
