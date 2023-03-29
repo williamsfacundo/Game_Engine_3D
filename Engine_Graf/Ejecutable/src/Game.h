@@ -10,8 +10,7 @@
 class Game : public BaseGame
 {
 private:
-	Entity2d* _sprite;
-	TriangleShape* _triangleShape;
+	Entity2d* _sprite;	
 
 public:
 	Game();
