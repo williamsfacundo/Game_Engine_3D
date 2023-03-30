@@ -1,5 +1,4 @@
 #include "Input.h"
-#include "Window.h"
 
 DllExport bool Input::IsKeyPressedImpl(int keycode)
 {
@@ -15,23 +14,48 @@ DllExport bool Input::IsMouseButtonPressedImpl(int button)
 	return state == GLFW_PRESS;
 }
 
-DllExport float  Input::GetMouseXImpl()
+DllExport float Input::GetMouseXImpl()
 {
-	glm::vec2 position = getMousePositionImpl();
+	vec2 position = getMousePositionImpl();
 	return position.x;
 }
 
-DllExport float  Input::GetMouseYImpl()
+DllExport float Input::GetMouseYImpl()
 {
-	glm::vec2 position = getMousePositionImpl();
+	vec2 position = getMousePositionImpl();
 	return position.y;
 }
 
-DllExport glm::vec2 Input::getMousePositionImpl()
+DllExport vec2 Input::getMousePositionImpl()
 {
 	double xPos, yPos;
 	Window* window = Window::getWindow();
 	glfwGetCursorPos(window->getGLFWwindow(), &xPos, &yPos);
 
-	return glm::vec2((float)xPos, (float)yPos - window->getScreenHeight());
+	return vec2((float)xPos, (float)yPos - window->getScreenHeight());
+}
+
+DllExport bool Input::getKeyPressed(int keycode) 
+{
+	return IsKeyPressedImpl(keycode); 
+}
+
+DllExport bool Input::getMouseButtonPressed(int button) 
+{ 
+	return IsMouseButtonPressedImpl(button); 
+}
+
+DllExport float Input::getMouseX()
+{ 
+	return GetMouseXImpl();
+}
+
+DllExport float Input::getMouseY() 
+{ 
+	return GetMouseYImpl(); 
+}
+
+DllExport vec2 Input::getMousePosition() 
+{ 
+	return getMousePositionImpl();
 }

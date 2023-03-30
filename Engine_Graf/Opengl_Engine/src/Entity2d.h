@@ -8,6 +8,7 @@
 #include "Shader.h"
 #include "Texture.h"
 #include "ShaderType.h"
+#include "Camera.h"
 
 class Entity2d : public Entity
 {

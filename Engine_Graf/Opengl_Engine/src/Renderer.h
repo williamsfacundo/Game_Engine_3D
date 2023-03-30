@@ -14,8 +14,7 @@ class Renderer
 private:	
 	static Renderer* _renderer;
 	
-	glm::mat4 _projectionMatrix;
-	glm::mat4 _viewMatrix;
+	glm::mat4 _projectionMatrix;	
 	
 	DllExport Renderer();
 
@@ -26,8 +25,7 @@ public:
 	
 	DllExport static Renderer* getRenderer();
 	
-	DllExport glm::mat4 getProjectionMatrix();
-	DllExport glm::mat4 getViewMatrix();
+	DllExport glm::mat4 getProjectionMatrix();	
 	
 	DllExport void Draw(VertexArray* va, IndexBuffer* ib, Shader* shader);
 	

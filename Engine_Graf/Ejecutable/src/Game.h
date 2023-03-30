@@ -10,7 +10,13 @@
 class Game : public BaseGame
 {
 private:
-	Entity2d* _sprite;	
+	Entity2d* _staticSprite;
+	Entity2d* _playerSprite;
+
+	vec3 _playerFront;
+	vec3 _cameraOffset;
+
+	bool _firstPerson;
 
 public:
 	Game();
@@ -21,6 +27,10 @@ public:
 	void update();
 	void draw();
 	void deinit();
+
+	void SwitchPlayerView();
+
+	void MovePlayer();
 };
 
 #endif

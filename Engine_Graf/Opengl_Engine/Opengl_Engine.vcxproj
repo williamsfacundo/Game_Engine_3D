@@ -158,6 +158,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Camera.cpp" />
     <ClCompile Include="src\MyAssert.cpp" />
     <ClCompile Include="src\BaseGame.cpp" />
     <ClCompile Include="src\CollisionManager.cpp" />
@@ -184,6 +185,7 @@
     <ClCompile Include="src\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Camera.h" />
     <ClInclude Include="src\MyAssert.h" />
     <ClInclude Include="src\BaseGame.h" />
     <ClInclude Include="src\CollisionManager.h" />

@@ -15,10 +15,7 @@ Renderer::~Renderer()
 
 DllExport void Renderer::initRenderer()
 {
-	_projectionMatrix = glm::perspective(glm::radians(45.0f), 800.0f / 600.0f, 0.1f, 1000.0f);
-
-	//First vector = position of the camera, second = position the camera is looking at, last = where in the world is the up
-	_viewMatrix = glm::lookAt(glm::vec3(0.0f, 0.0f, 250.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+	_projectionMatrix = glm::perspective(glm::radians(45.0f), 800.0f / 600.0f, 0.1f, 1000.0f);	
 }
 
 DllExport Renderer* Renderer::getRenderer()
@@ -34,11 +31,6 @@ DllExport Renderer* Renderer::getRenderer()
 DllExport glm::mat4 Renderer::getProjectionMatrix()
 {
 	return _projectionMatrix;
-}
-
-DllExport glm::mat4 Renderer::getViewMatrix()
-{
-	return _viewMatrix;
 }
 
 DllExport void Renderer::Draw(VertexArray* va, IndexBuffer* ib, Shader* shader)
