@@ -1,7 +1,5 @@
 #include "Entity2d.h"
 
-#include "ImGuiEngine.h"
-
 DllExport Entity2d::Entity2d(glm::vec3 initialPosition) : Entity(initialPosition)
 {
 	_va = NULL;
@@ -34,8 +32,6 @@ DllExport glm::vec3* Entity2d::getVertices()
 
 DllExport void Entity2d::draw()
 {
-	ImGuiEngine::getImGuiEngine()->imGuiDrawObject(this, getLocalId());
-
 	glm::mat4 mvp = Renderer::getRenderer()->getProjectionMatrix() * Camera::getCamera()->getViewMatrix() * getModelMatrix();
 
 	_shader->bind();

@@ -4,15 +4,13 @@
 #include "Renderer.h"
 #include "window.h"
 #include "Timer.h"
-#include "ImGuiEngine.h"
 #include "Input.h"
 
 class BaseGame
 {
 private:
 	Window* _window;
-	Renderer* _renderer;
-	ImGuiEngine* _imGuiEngine;
+	Renderer* _renderer;	
 	Timer* _timer;
 
 	DllExport void setBaseGameClases();

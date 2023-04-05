@@ -56,6 +56,8 @@ DllExport void Entity::addScale(glm::vec3 scaleToAdd)
 DllExport void Entity::addRotation(glm::vec3 rotationToAdd)
 {
 	_rotation += rotationToAdd;
+
+	UpdateTRSMat();
 }
 
 DllExport void Entity::setPosition(glm::vec3 newPosition)
