@@ -8,6 +8,8 @@ Game::Game()
 	_playerFront = vec3(0.0f);
 	_cameraOffset = vec3(0.0f);
 
+	_playerVelocity = vec3(0.0f);
+
 	_firstPerson = true;
 }
 
@@ -28,6 +30,8 @@ void Game::init()
 void Game::input()
 {
 	SwitchPlayerView();
+
+	MovePlayer();
 }
 
 void Game::update()
@@ -61,10 +65,34 @@ void Game::SwitchPlayerView()
 	if (Input::getKeyPressed(GLFW_KEY_SPACE))
 	{
 		_firstPerson = !_firstPerson;
-	}
+	}	
 }
 
 void Game::MovePlayer()
 {
-		
+	if (Input::getKeyPressed(GLFW_KEY_W))
+	{
+		_playerVelocity = vec3(0.0f, 0.0f, -100.0f);
+
+		_playerSprite->addPosition(_playerVelocity * getDeltaTime());
+	}
+	else if (Input::getKeyPressed(GLFW_KEY_S))
+	{
+		_playerVelocity = vec3(0.0f, 0.0f, 100.0f);
+
+		_playerSprite->addPosition(_playerVelocity * getDeltaTime());
+	}
+
+	if (Input::getKeyPressed(GLFW_KEY_A))
+	{
+		_playerVelocity = vec3(-100.0f, 0.0f, 0.0f);
+
+		_playerSprite->addPosition(_playerVelocity * getDeltaTime());
+	}
+	else if (Input::getKeyPressed(GLFW_KEY_D))
+	{
+		_playerVelocity = vec3(100.0f, 0.0f, 0.0f);
+
+		_playerSprite->addPosition(_playerVelocity * getDeltaTime());
+	}		
 }

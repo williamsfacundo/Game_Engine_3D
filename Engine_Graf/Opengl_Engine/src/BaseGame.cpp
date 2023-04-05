@@ -46,3 +46,8 @@ DllExport void BaseGame::runEngine()
 
 	deinit();
 }
+
+DllExport float BaseGame::getDeltaTime()
+{
+	return _timer->timeBetweenFrames();
+}

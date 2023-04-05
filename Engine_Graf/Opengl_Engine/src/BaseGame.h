@@ -21,6 +21,8 @@ protected:
 
 public:	
 	DllExport void runEngine();
+
+	DllExport float getDeltaTime();
 	
 	DllExport virtual void init() = 0;
 	DllExport virtual void input() = 0;

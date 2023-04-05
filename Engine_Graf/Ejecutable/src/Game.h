@@ -16,6 +16,8 @@ private:
 	vec3 _playerFront;
 	vec3 _cameraOffset;
 
+	vec3 _playerVelocity;
+
 	bool _firstPerson;
 
 public:
