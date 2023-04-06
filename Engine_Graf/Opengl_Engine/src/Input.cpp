@@ -1,5 +1,10 @@
 #include "Input.h"
 
+DllExport void Input::hideCursor()
+{
+	glfwSetInputMode(Window::getWindow()->getGLFWwindow(), GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+}
+
 DllExport bool Input::IsKeyPressedImpl(int keycode)
 {
 	auto state = glfwGetKey(Window::getWindow()->getGLFWwindow(), keycode);

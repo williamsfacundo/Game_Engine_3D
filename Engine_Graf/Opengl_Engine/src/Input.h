@@ -21,6 +21,8 @@ private:
 	DllExport static vec2 getMousePositionImpl();
 
 public:
+	DllExport static void hideCursor();
+
 	DllExport static bool getKeyPressed(int keycode);
 
 	DllExport static bool getMouseButtonPressed(int button);

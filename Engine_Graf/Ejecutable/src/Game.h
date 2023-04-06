@@ -10,8 +10,6 @@ class Game : public BaseGame
 private:
 	Entity2d* _staticSprite;
 
-	//Entity2d* _playerSprite;	
-
 public:
 	Game();	
 

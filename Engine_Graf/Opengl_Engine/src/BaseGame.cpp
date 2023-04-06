@@ -28,8 +28,10 @@ DllExport void BaseGame::runEngine()
 {
 	setBaseGameClases();	
 	
+	Input::hideCursor();
+
 	init();
-		
+	
 	while (!_window->getWindowsShouldClose())
 	{
 		_renderer->Clear();
