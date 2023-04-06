@@ -2,20 +2,27 @@
 
 Camera* Camera::_camera = NULL;
 
-DllExport Camera::Camera()
+Camera::Camera()
 {
-	_cameraPosition = vec3(0.0f, 0.0f, 250.0f);
-	_cameraTarget = vec3(0.0f, 0.0f, 0.0f);
-	_cameraReverseDirection = normalize(_cameraPosition - _cameraTarget);
-	_cameraRight = normalize(cross(UpVector, _cameraReverseDirection));
-	_cameraUp = cross(_cameraReverseDirection, _cameraRight);
-	
-	_viewMatrix = lookAt(_cameraPosition, _cameraTarget, _cameraUp);
-}
+	_timer = Timer::getTimer();
 
-DllExport Camera::~Camera()
-{
+	_depthMovement = MoveTypeEnum::NONE;
 
+	_sidewaysMovement = MoveTypeEnum::NONE;
+
+	_position = InitialPosition;
+
+	_direction = normalize(_position - WorldOrigin);
+
+	_right = normalize(cross(WorldUp, _direction));
+
+	_up = normalize(cross(_direction, _right));
+
+	_front = normalize(WorldOrigin - _position);
+
+	updateView();
+
+	_moveSpeed = BaseSpeed;
 }
 
 DllExport Camera* Camera::getCamera()
@@ -28,59 +35,90 @@ DllExport Camera* Camera::getCamera()
 	return _camera;
 }
 
-DllExport void Camera::addCameraPosition(vec3 newValue)
+DllExport void Camera::addPosition(vec3 newPos)
 {
-	_cameraPosition += newValue;
+	_position += newPos;
+
+	updateView();
 }
 
-DllExport void Camera::setCameraPosition(vec3 newPosition)
+DllExport void Camera::subtractPosition(vec3 newPos)
 {
-	_cameraPosition = newPosition;
+	_position -= newPos;
+
+	updateView();
 }
 
-DllExport void Camera::setCameraTarget(vec3 newTarget)
+DllExport mat4 Camera::getView()
 {
-	_cameraTarget = newTarget;
+	return _view;
 }
 
-DllExport vec3 Camera::getCameraPosition()
+DllExport void Camera::updateView()
 {
-	return _cameraPosition;
+	_view = lookAt(_position, _position + _front, WorldUp);
 }
 
-DllExport vec3 Camera::getCameraTarget()
+DllExport void Camera::cameraInput()
 {
-	return _cameraTarget;
+	if (Input::getKeyPressed(GLFW_KEY_W))
+	{
+		_depthMovement = MoveTypeEnum::FORWARD;
+	}
+	else if (Input::getKeyPressed(GLFW_KEY_S))
+	{
+		_depthMovement = MoveTypeEnum::BACKWARD;
+	}
+	else
+	{
+		_depthMovement = MoveTypeEnum::NONE;
+	}
+
+	if (Input::getKeyPressed(GLFW_KEY_A))
+	{
+		_sidewaysMovement = MoveTypeEnum::LEFT;
+	}
+	else if (Input::getKeyPressed(GLFW_KEY_D))
+	{
+		_sidewaysMovement = MoveTypeEnum::RIGHT;
+	}
+	else
+	{
+		_sidewaysMovement = MoveTypeEnum::NONE;
+	}
 }
 
-DllExport mat4 Camera::getViewMatrix()
+DllExport void Camera::cameraMovement()
 {
-	return _viewMatrix;
-}
+	switch (_depthMovement)
+	{
+	case MoveTypeEnum::FORWARD:
 
-DllExport void Camera::calculateViewMatrix()
-{
-	_cameraReverseDirection = normalize(_cameraPosition - _cameraTarget);
-	_cameraRight = normalize(cross(UpVector, _cameraReverseDirection));
-	_cameraUp = cross(_cameraReverseDirection, _cameraRight);
+		addPosition(_moveSpeed * _front * static_cast<float>(_timer->timeBetweenFrames()));
 
-	_viewMatrix = lookAt(_cameraPosition, _cameraTarget, _cameraUp);
-}
+		break;
+	case MoveTypeEnum::BACKWARD:
 
-DllExport void Camera::firstPersonCameraFollow(vec3 objectPosition, vec3 objectDirection)
-{
-	_cameraPosition = objectPosition;
+		subtractPosition(_moveSpeed * _front * static_cast<float>(_timer->timeBetweenFrames()));
 
-	_cameraTarget = _cameraPosition + objectDirection;
+		break;
+	default:
+		break;
+	}
 
-	calculateViewMatrix();
-}
+	switch (_sidewaysMovement)
+	{
+	case MoveTypeEnum::LEFT:
 
-DllExport void Camera::thirdPersonCameraFollow(vec3 objectPosition, vec3 offset)
-{
-	_cameraPosition = objectPosition + offset;
-	
-	_cameraTarget = objectPosition;
+		subtractPosition(normalize(cross(_front, _up)) * _moveSpeed * static_cast<float>(_timer->timeBetweenFrames()));
+		
+		break;
+	case MoveTypeEnum::RIGHT:
 
-	calculateViewMatrix();
+		addPosition(normalize(cross(_front, _up)) * _moveSpeed * static_cast<float>(_timer->timeBetweenFrames()));
+		
+		break;	
+	default:
+		break;
+	}
 }

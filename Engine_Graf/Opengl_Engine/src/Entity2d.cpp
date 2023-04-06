@@ -32,7 +32,7 @@ DllExport glm::vec3* Entity2d::getVertices()
 
 DllExport void Entity2d::draw()
 {
-	glm::mat4 mvp = Renderer::getRenderer()->getProjectionMatrix() * Camera::getCamera()->getViewMatrix() * getModelMatrix();
+	glm::mat4 mvp = Renderer::getRenderer()->getProjectionMatrix() * Camera::getCamera()->getView() * getModelMatrix();
 
 	_shader->bind();
 	_shader->setUniformsMat4f("u_MVP", mvp);

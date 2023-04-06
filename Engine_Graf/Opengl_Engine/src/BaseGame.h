@@ -5,6 +5,7 @@
 #include "window.h"
 #include "Timer.h"
 #include "Input.h"
+#include "Camera.h"
 
 class BaseGame
 {
@@ -12,6 +13,7 @@ private:
 	Window* _window;
 	Renderer* _renderer;	
 	Timer* _timer;
+	Camera* _camera;
 
 	DllExport void setBaseGameClases();
 

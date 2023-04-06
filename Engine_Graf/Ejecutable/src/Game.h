@@ -2,37 +2,24 @@
 #define GAME_H
 
 #include "BaseGame.h"
-#include "Shape.h"
-#include "RectangleShape.h"
+
 #include "Sprite.h"
-#include "TriangleShape.h"
 
 class Game : public BaseGame
 {
 private:
 	Entity2d* _staticSprite;
-	Entity2d* _playerSprite;
 
-	vec3 _playerFront;
-	vec3 _cameraOffset;
-
-	vec3 _playerVelocity;
-
-	bool _firstPerson;
+	//Entity2d* _playerSprite;	
 
 public:
-	Game();
-	~Game();
+	Game();	
 
 	void init();
 	void input();
 	void update();
 	void draw();
-	void deinit();
-
-	void SwitchPlayerView();
-
-	void MovePlayer();
+	void deinit();	
 };
 
 #endif

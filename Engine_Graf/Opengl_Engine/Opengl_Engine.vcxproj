@@ -185,6 +185,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Camera.h" />
+    <ClInclude Include="src\MoveTypeEnum.h" />
     <ClInclude Include="src\MyAssert.h" />
     <ClInclude Include="src\BaseGame.h" />
     <ClInclude Include="src\CollisionManager.h" />
