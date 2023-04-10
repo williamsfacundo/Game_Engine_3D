@@ -10,10 +10,6 @@
 class Entity
 {
 private:	
-	static int EntitiesCount;
-
-	int _localId;
-	
 	glm::vec3 _translation;
 	glm::vec3 _rotation;
 	glm::vec3 _scale;
@@ -72,9 +68,7 @@ public:
 
 	DllExport float getRotationX();
 	DllExport float getRotationY();
-	DllExport float getRotationZ();
-
-	DllExport int getLocalId();
+	DllExport float getRotationZ();	
 };
 
 #endif

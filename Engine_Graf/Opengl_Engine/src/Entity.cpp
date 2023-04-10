@@ -1,13 +1,7 @@
 #include "Entity.h"
 
-int Entity::EntitiesCount = 0;
-
 DllExport Entity::Entity(glm::vec3 initialPosition)
-{
-	_localId = EntitiesCount;
-	
-	EntitiesCount++;
-
+{	
 	_modelMatrix = glm::mat4();
 
 	_translation = initialPosition;
@@ -202,11 +196,6 @@ DllExport float Entity::getRotationY()
 DllExport float Entity::getRotationZ()
 {
 	return _rotation.z;
-}
-
-DllExport int Entity::getLocalId()
-{
-	return _localId;
 }
 
 DllExport glm::mat4 Entity::getModelMatrix()
