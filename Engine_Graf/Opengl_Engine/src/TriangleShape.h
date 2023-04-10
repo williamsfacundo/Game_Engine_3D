@@ -1,23 +1,24 @@
-#ifndef TRIANGLE_SHAPE_H
+/*#ifndef TRIANGLE_SHAPE_H
 #define TRIANGLE_SHAPE_H
 
-#include "Shape.h"
+#include "Entity2d.h"
 
-class TriangleShape : public Shape
+class TriangleShape : public Entity2d
 {
 private:
     unsigned int _indices[3];
     
     float _positions[6];
 
-    DllExport void  setVertices();
-    DllExport void  setIndices();
+    DllExport void setPositions();
 
-    DllExport void setIndixs();
-    DllExport void calculateVertices();
+    DllExport void setVertices();
+
+    DllExport void setIndices();   
+    
 public:    
 
-    DllExport TriangleShape(glm::vec4 RGBA, glm::vec3 initialPosition);
+    DllExport TriangleShape(glm::vec4 RGBA);
 };
 
-#endif
+#endif*/

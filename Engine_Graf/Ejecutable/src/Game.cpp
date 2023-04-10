@@ -6,8 +6,10 @@ Game::Game()
 }
 
 void Game::init()
-{	
-	_staticSprite = new Sprite("Logo.jpg", glm::vec3(0.0f, 0.0f, -300.0f));	
+{
+	_staticSprite = new Sprite("Logo.jpg");
+	
+	_staticSprite->setPosition(vec3(0.0f, 0.0f, -300.0f));
 }
 
 void Game::input()

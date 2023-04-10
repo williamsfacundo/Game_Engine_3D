@@ -1,6 +1,6 @@
 #include "Sprite.h"
 
-Sprite::Sprite(std::string imageName, glm::vec3 initialPosition) : Entity2d(initialPosition)
+Sprite::Sprite(std::string imageName) : Entity2d()
 {	
 	initSprite();
 
@@ -9,7 +9,10 @@ Sprite::Sprite(std::string imageName, glm::vec3 initialPosition) : Entity2d(init
 
 Sprite::~Sprite()
 {
-	
+	if(_texture != NULL)
+	{
+		delete _texture;
+	}
 }
 
 void Sprite::setVertices()
@@ -33,7 +36,7 @@ void Sprite::setVertices()
 	_positions[15] = 1.0f;
 }
 
-void Sprite::setIndixs()
+void Sprite::setIndices()
 {
 	_indices[0] = 0;
 	_indices[1] = 1;
@@ -43,38 +46,33 @@ void Sprite::setIndixs()
 	_indices[5] = 0;
 }
 
-void Sprite::calculateVertices()
-{
-
-}
-
 void Sprite::initSprite()
 {
 	setVertices();
-	setIndixs();
+	setIndices();
 
-	_shaderType = ShaderType::whithTexture;
+	setShaderType(ShaderType::whithTexture);
 	
-	_va = new VertexArray();
-	_vb = new VertexBuffer(_positions, 4 * 4 * sizeof(float));
-	_layout = new VertexBufferLayout();
-	_ib = new IndexBuffer(_indices, 6);
-	_shader = new Shader(_shaderType);
+	setVertexArray(new VertexArray());
+	setVertexBuffer(new VertexBuffer(_positions, 4 * 4 * sizeof(float)));
+	setVertexBufferLayout(new VertexBufferLayout());
+	setIndexBuffer(new IndexBuffer(_indices, 6));
+	setShader(new Shader(getShaderType()));
 	
-	_va->bind();	
-	_vb->bind();
-	_ib->bind();
-	_shader->bind();
+	getVertexArray()->bind();	
+	getVertexBuffer()->bind();
+	getIndexBuffer()->bind();
+	getShader()->bind();
 
-	_layout->Push<float>(2);		 
-	_layout->Push<float>(2);
+	getVertexBufferLayout()->Push<float>(2);		 
+	getVertexBufferLayout()->Push<float>(2);
 
-	_va->AddBuffer(*_vb, _layout);
+	getVertexArray()->AddBuffer(*getVertexBuffer(), getVertexBufferLayout());
 
-	_va->unbind();
-	_vb->unbind();
-	_ib->unbind();
-	_shader->unbind();
+	getVertexArray()->unbind();
+	getVertexBuffer()->unbind();
+	getIndexBuffer()->unbind();
+	getShader()->unbind();
 }
 
 void Sprite::setTexture(std::string imageName)
@@ -92,11 +90,11 @@ void Sprite::setTexture(std::string imageName)
 
 	_texture->bind(0);
 
-	_shader->bind();
+	getShader()->bind();
 
-	_shader->setUniforms1i("u_Texture", 0);
+	getShader()->setUniforms1i("u_Texture", 0);
 
-	_shader->unbind();
+	getShader()->unbind();
 
 	_texture->unbind();
 }

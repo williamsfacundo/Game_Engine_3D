@@ -1,26 +1,26 @@
-#pragma once
+#ifndef RECTANGLE_SHAPE_H
+#define RECTANGLE_SHAPE_H
 
-#include "Shape.h"
+#include "Entity2d.h"
 
-class RectangleShape : public Shape
+class RectangleShape : public Entity2d
 {
-
 private:
+    int _width; 
+    int _height;
 
+    float _positions[8];
 
-    int width, height;
-    float positions[8];
-    unsigned int indices[6];
+    unsigned int _indices[6];        
 
-    DllExport void  setVertices();
-    DllExport void  setIndixs();
-    DllExport void calculateVertices();
+    DllExport void setVertices();
 
-public:
-    
-    DllExport RectangleShape(glm::vec3 initialPosition);
+    DllExport void setIndices();
 
-    DllExport void setColor(glm::vec4 RGBA);
+public:    
+    DllExport RectangleShape();
 
+    DllExport void setColor(vec4 RGBA);
 };
 
+#endif

@@ -1,74 +1,52 @@
 #ifndef ENTITY_H
 #define ENTITY_H
 
+#include <glm/vec3.hpp>
+
 #include "DDLExport.h"
-#include "Renderer.h"
-#include "VertexArray.h"
-#include "VertexBuffer.h"
-#include "VertexBufferLayout.h"
+
+using namespace glm;
 
 class Entity
 {
 private:	
-	glm::vec3 _translation;
-	glm::vec3 _rotation;
-	glm::vec3 _scale;
+	vec3 _position;
+	vec3 _rotation;
+	vec3 _scale;
 
-	glm::mat4 _xRotationMatrix;
-	glm::mat4 _yRotationMatrix;
-	glm::mat4 _zRotationMatrix;
-
-	glm::mat4 _translationMatrix;
-	glm::mat4 _rotationMatrix;
-	glm::mat4 _scalingMatrix;
+	vec3 _right;
+	vec3 _up;
+	vec3 _front;
 
 protected:
-	DllExport glm::mat4 getModelMatrix();
+	DllExport Entity();
 
 public:
-	glm::mat4 _modelMatrix;
-	DllExport Entity(glm::vec3 initialPosition);
 	DllExport ~Entity();
 
-	DllExport void UpdateTRSMat();
+	DllExport void addPosition(vec3 value);
+	DllExport void addScale(vec3 value);
+	DllExport void addRotation(vec3 value);
 
-	DllExport virtual void draw() = 0;
-
-	DllExport void addPosition(glm::vec3 positionToAdd);
-	DllExport void addScale(glm::vec3 scaleToAdd);
-	DllExport void addRotation(glm::vec3 rotationToAdd);
+	DllExport void addRight(vec3 value);
+	DllExport void addUp(vec3 value);
+	DllExport void addFront(vec3 value);
 	
-	DllExport void setPosition(glm::vec3 newPosition);
-	DllExport void setRotation(glm::vec3 newRotation);
-	DllExport void setScale(glm::vec3 newScale);
+	DllExport void setPosition(vec3 newPosition);
+	DllExport void setRotation(vec3 newRotation);
+	DllExport void setScale(vec3 newScale);
 
-	DllExport void setPositionX(float posX);
-	DllExport void setPositionY(float posY);
-	DllExport void setPositionZ(float posZ);
+	DllExport void setRight(vec3 newRight);
+	DllExport void setUp(vec3 newUp);
+	DllExport void setFront(vec3 newFront);
 
-	DllExport void  setScaleX(float scalX);
-	DllExport void  setScaleY(float scalY);
-	DllExport void  setScaleZ(float scalZ);
+	DllExport vec3 getPosition();
+	DllExport vec3 getRotation();
+	DllExport vec3 getScale();
 
-	DllExport void  setRotationX(float rotX);
-	DllExport void  setRotationY(float rotY);
-	DllExport void  setRotationZ(float rotZ);
-
-	DllExport glm::vec3 getPosition();
-	DllExport glm::vec3 getRotation();
-	DllExport glm::vec3 getScale();
-
-	DllExport float getPositionX();
-	DllExport float getPositionY();
-	DllExport float getPositionZ();
-
-	DllExport float getScaleX();
-	DllExport float getScaleY();
-	DllExport float getScaleZ();
-
-	DllExport float getRotationX();
-	DllExport float getRotationY();
-	DllExport float getRotationZ();	
+	DllExport vec3 getRight();
+	DllExport vec3 getUp();
+	DllExport vec3 getFront();
 };
 
 #endif

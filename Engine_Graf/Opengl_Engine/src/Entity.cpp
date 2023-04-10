@@ -1,204 +1,111 @@
 #include "Entity.h"
 
-DllExport Entity::Entity(glm::vec3 initialPosition)
-{	
-	_modelMatrix = glm::mat4();
+DllExport Entity::Entity()
+{
+	_position = vec3(0.0f, 0.0f, 0.0f);
 
-	_translation = initialPosition;
+	_rotation = vec3(0.0f, 0.0f, 0.0f);
 
-	_rotation = glm::vec3(0, 0, 0);
+	_scale = vec3(1.0f, 1.0f, 1.0f);
 
-	_scale = glm::vec3(1, 1, 0);
-	
-	UpdateTRSMat();
+	_right = vec3(1.0f, 0.0f, 0.0f);
+
+	_up = vec3(0.0f, 1.0f, 0.0f);
+
+	_front = vec3(0.0f, 0.0f, 1.0f);
 }
 
 DllExport Entity::~Entity()
 {
-	
+
 }
 
-DllExport void Entity::UpdateTRSMat()
+DllExport void Entity::addPosition(glm::vec3 value)
 {
-	_translationMatrix = glm::translate(glm::mat4(1.0f), _translation);
-
-	_scalingMatrix = glm::scale(glm::mat4(1.0f), _scale);
-
-	_xRotationMatrix = glm::rotate(glm::mat4(1.0f), glm::radians(_rotation.x), glm::vec3(1.0f, 0.0f, 0.0f));
-	_yRotationMatrix = glm::rotate(glm::mat4(1.0f), glm::radians(_rotation.y), glm::vec3(0.0f, 1.0f, 0.0f));
-	_zRotationMatrix = glm::rotate(glm::mat4(1.0f), glm::radians(_rotation.z), glm::vec3(0.0f, 0.0f, 1.0f));
-
-	_rotationMatrix = _xRotationMatrix * _yRotationMatrix * _zRotationMatrix;
-
-	_modelMatrix = _translationMatrix * _rotationMatrix * _scalingMatrix;
+	_position += value;
 }
 
-DllExport void Entity::addPosition(glm::vec3 positionToAdd)
+DllExport void Entity::addScale(glm::vec3 value)
 {
-	_translation += positionToAdd;
-
-	UpdateTRSMat();
+	_scale += value;
 }
 
-DllExport void Entity::addScale(glm::vec3 scaleToAdd)
+DllExport void Entity::addRotation(glm::vec3 value)
 {
-	_scale += scaleToAdd;
-
-	UpdateTRSMat();
+	_rotation += value;
 }
 
-DllExport void Entity::addRotation(glm::vec3 rotationToAdd)
+DllExport void Entity::addRight(vec3 value)
 {
-	_rotation += rotationToAdd;
+	_right += value;
+}
 
-	UpdateTRSMat();
+DllExport void Entity::addUp(vec3 value)
+{
+	_up += value;
+}
+
+DllExport void Entity::addFront(vec3 value)
+{
+	_front += value;
 }
 
 DllExport void Entity::setPosition(glm::vec3 newPosition)
 {
-	_translation = newPosition;
-
-	UpdateTRSMat();
+	_position = newPosition;	
 }
 
 DllExport void Entity::setRotation(glm::vec3 newRotation)
 {
-	_rotation = newRotation;
-
-	UpdateTRSMat();
+	_rotation = newRotation;	
 }
 
 DllExport void Entity::setScale(glm::vec3 newScale)
 {
-	_scale = newScale;
-
-	UpdateTRSMat();
+	_scale = newScale;	
 }
 
-DllExport void Entity::setPositionX(float posX)
+DllExport void Entity::setRight(vec3 newRight)
 {
-	_translation.x = posX;
-
-	UpdateTRSMat();
+	_right = newRight;
 }
 
-DllExport void Entity::setPositionY(float posY)
+DllExport void Entity::setUp(vec3 newUp)
 {
-	_translation.y = posY;
-
-	UpdateTRSMat();
+	_up = newUp;
 }
 
-DllExport void Entity::setPositionZ(float posZ)
+DllExport void Entity::setFront(vec3 newFront)
 {
-	_translation.z = posZ;
-
-	UpdateTRSMat();
+	_front = newFront;
 }
 
-DllExport void Entity::setScaleX(float scalX)
+DllExport vec3 Entity::getPosition()
 {
-	_scale.x = scalX;
-
-	UpdateTRSMat();
+	return _position;
 }
 
-DllExport void Entity::setScaleY(float scalY)
-{
-	_scale.y = scalY;
-
-	UpdateTRSMat();
-}
-
-DllExport void  Entity::setScaleZ(float scalZ)
-{
-	_scale.z = scalZ;
-
-	UpdateTRSMat();
-}
-
-DllExport void  Entity::setRotationX(float rotX)
-{
-	_rotation.x = rotX;
-
-	UpdateTRSMat();
-}
-
-DllExport void  Entity::setRotationY(float rotY)
-{
-	_rotation.y = rotY;
-
-	UpdateTRSMat();
-}
-
-DllExport void Entity::setRotationZ(float rotZ)
-{
-	_rotation.z = rotZ;
-
-	UpdateTRSMat();
-}
-
-DllExport glm::vec3 Entity::getPosition()
-{
-	return _translation;
-}
-
-DllExport glm::vec3 Entity::getRotation()
+DllExport vec3 Entity::getRotation()
 {
 	return _rotation;
 }
 
-DllExport glm::vec3 Entity::getScale()
+DllExport vec3 Entity::getScale()
 {
 	return _scale;
 }
 
-DllExport float Entity::getPositionX()
+DllExport vec3 Entity::getRight()
 {
-	return _translation.x;
+	return _right;
 }
 
-DllExport float Entity::getPositionY()
+DllExport vec3 Entity::getUp()
 {
-	return _translation.y;
+	return _up;
 }
 
-DllExport float Entity::getPositionZ()
+DllExport vec3 Entity::getFront()
 {
-	return _translation.z;
-}
-	  
-DllExport float Entity::getScaleX()
-{
-	return _scale.x;
-}
-
-DllExport float Entity::getScaleY()
-{
-	return _scale.y;
-}
-
-DllExport float Entity::getScaleZ()
-{
-	return _scale.z;
-}
-
-DllExport float Entity::getRotationX()
-{
-	return _rotation.x;
-}
-
-DllExport float Entity::getRotationY()
-{
-	return _rotation.y;
-}
-
-DllExport float Entity::getRotationZ()
-{
-	return _rotation.z;
-}
-
-DllExport glm::mat4 Entity::getModelMatrix()
-{
-	return _modelMatrix;
+	return _front;
 }
