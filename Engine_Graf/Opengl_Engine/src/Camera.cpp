@@ -23,6 +23,18 @@ Camera::Camera()
 	updateView();
 
 	_moveSpeed = BaseSpeed;
+
+	_yaw = -90.0f;
+
+	_pitch = 0.0f;
+
+	_lastCursorX = Input::getMousePosition().x;
+
+	_lastCursorY = Input::getMousePosition().y;
+
+	_xCursorOffset = 0.0f;
+
+	_yCursorOffset = 0.0f;
 }
 
 DllExport Camera* Camera::getCamera()
@@ -57,6 +69,39 @@ DllExport mat4 Camera::getView()
 DllExport void Camera::updateView()
 {
 	_view = lookAt(_position, _position + _front, WorldUp);
+}
+
+DllExport void Camera::updateFront()
+{
+	_xCursorOffset = (Input::getMousePosition().x - _lastCursorX) * Sensitivity;
+
+	_yCursorOffset = (_lastCursorY - Input::getMousePosition().y) * Sensitivity;
+
+	_lastCursorX = Input::getMousePosition().x;
+
+	_lastCursorY = Input::getMousePosition().y;
+
+	updateEulerAngles();
+
+	_front = eulerToDirection(_yaw, _pitch);
+
+	updateView();
+}
+
+DllExport void Camera::updateEulerAngles()
+{
+	_yaw += _xCursorOffset;
+
+	_pitch += _yCursorOffset;
+
+	if (_pitch > MaxPitch)
+	{
+		_pitch = MaxPitch;
+	}
+	else if (_pitch < MinPitch)
+	{
+		_pitch = MinPitch;
+	}
 }
 
 DllExport void Camera::cameraInput()
@@ -121,4 +166,9 @@ DllExport void Camera::cameraMovement()
 	default:
 		break;
 	}
+}
+
+DllExport vec3 Camera::eulerToDirection(float yaw, float pitch)
+{
+	return vec3(cos(radians(yaw)) * cos(radians(pitch)), sin(radians(pitch)), sin(radians(yaw))) * cos(radians(pitch));
 }

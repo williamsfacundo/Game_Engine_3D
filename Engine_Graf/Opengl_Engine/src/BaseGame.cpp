@@ -42,9 +42,11 @@ DllExport void BaseGame::runEngine()
 
 		input();
 
+		_camera->updateFront();		
+
 		_camera->cameraMovement();
 
-		update();
+		update();		
 
 		draw();
 		

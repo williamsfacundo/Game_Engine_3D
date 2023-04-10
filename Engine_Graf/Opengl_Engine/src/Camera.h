@@ -34,12 +34,25 @@ private:
 
 	mat4 _view;
 
+	const float Sensitivity = 0.1f;
+	const float MaxPitch = 89.0f;
+	const float MinPitch = -89.0f;
+
 	float _moveSpeed;
+
+	float _yaw;
+	float _pitch;
+
+	float _lastCursorX;
+	float _lastCursorY;
+
+	float _xCursorOffset;
+	float _yCursorOffset;
 
 	Camera();
 
-public:
-
+	DllExport void updateEulerAngles();
+public:	
 	DllExport static Camera* getCamera();	
 
 	DllExport void addPosition(vec3 newPos);
@@ -50,9 +63,13 @@ public:
 
 	DllExport void updateView();
 
+	DllExport void updateFront();
+
 	DllExport void cameraInput();
 
 	DllExport void cameraMovement();
+
+	DllExport vec3 eulerToDirection(float yaw, float pitch);
 };
 
 #endif
