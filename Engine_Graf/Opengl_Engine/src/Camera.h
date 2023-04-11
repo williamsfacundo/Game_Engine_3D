@@ -5,71 +5,50 @@
 
 #include "DDLExport.h"
 #include "Input.h"
-#include "Timer.h"
+#include "Entity.h"
 #include "MoveTypeEnum.h"
 
 using namespace glm;
 
-class Camera
+enum class CameraStyle
+{
+	FIRST_PERSON = 0,
+	THIRD_PERSON = 1,
+	FREE = 2
+};
+
+class Camera : Entity
 {
 private:
 	static Camera* _camera;
 
-	const vec3 InitialPosition = vec3(0.0f, 0.0f, 10.0f);
-	const vec3 WorldOrigin = vec3(0.0f, 0.0f, 0.0f);
+	const vec3 InitialPosition = vec3(0.0f, 0.0f, 0.0f);
 	const vec3 WorldUp = vec3(0.0f, 1.0f, 0.0f);
+	const vec3 DefaultFront = vec3(0.0f, 0.0f, -1.0f);
+	const vec3 DefaultOffset = vec3(0.0f, 50.0f, -250);
+	
+	Entity* _target;
+	
+	mat4 _view;		
 
-	const float BaseSpeed = 100.0f;
+	vec3 _cameraOffset;
 
-	Timer* _timer;
-
-	MoveTypeEnum _depthMovement;
-	MoveTypeEnum _sidewaysMovement;
-
-	vec3 _position;
-	vec3 _direction;
-	vec3 _right;
-	vec3 _up;
-	vec3 _front;
-
-	mat4 _view;
-
-	const float Sensitivity = 0.1f;
-	const float MaxPitch = 89.0f;
-	const float MinPitch = -89.0f;
-
-	float _moveSpeed;
-
-	float _yaw;
-	float _pitch;
-
-	float _lastCursorX;
-	float _lastCursorY;
-
-	float _xCursorOffset;
-	float _yCursorOffset;
+	CameraStyle _cameraStyle;
 
 	Camera();
-
-	DllExport void updateEulerAngles();
+	
 public:	
 	DllExport static Camera* getCamera();	
 
-	DllExport void addPosition(vec3 newPos);
+	DllExport void setTarget(Entity* target);
 
-	DllExport void subtractPosition(vec3 newPos);
+	DllExport void setCameraStyle(CameraStyle cameraStyle);
 
 	DllExport mat4 getView();
 
+	DllExport CameraStyle getCameraStyle();
+
 	DllExport void updateView();
-
-	DllExport void updateFront();
-
-	DllExport void cameraInput();
-
-	DllExport void cameraMovement();
-
-	DllExport vec3 eulerToDirection(float yaw, float pitch);
 };
 
 #endif

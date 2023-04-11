@@ -35,19 +35,15 @@ DllExport void BaseGame::runEngine()
 	while (!_window->getWindowsShouldClose())
 	{
 		_renderer->Clear();
-
-		_timer->updateDeltaTime();		
-
-		_camera->cameraInput();
-
+				
 		input();
-
-		_camera->updateFront();		
-
-		_camera->cameraMovement();
-
+		
+		_timer->updateDeltaTime();		
+		
 		update();		
 
+		_camera->updateView();
+		
 		draw();
 		
 		glfwSwapBuffers(_window->getGLFWwindow());

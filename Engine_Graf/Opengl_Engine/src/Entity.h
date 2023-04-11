@@ -31,10 +31,15 @@ public:
 	DllExport void addRight(vec3 value);
 	DllExport void addUp(vec3 value);
 	DllExport void addFront(vec3 value);
+
+	DllExport void subtractPosition(vec3 value);
 	
 	DllExport void setPosition(vec3 newPosition);
 	DllExport void setRotation(vec3 newRotation);
 	DllExport void setScale(vec3 newScale);
+
+	DllExport void setRotationX(float newRotationX);
+	DllExport void setRotationY(float newRotationY);
 
 	DllExport void setRight(vec3 newRight);
 	DllExport void setUp(vec3 newUp);

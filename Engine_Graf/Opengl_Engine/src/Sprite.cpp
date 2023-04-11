@@ -99,7 +99,7 @@ void Sprite::setTexture(std::string imageName)
 	_texture->unbind();
 }
 
-void Sprite::drawTexture()
+void Sprite::drawSprite()
 {
 	_texture->bind(0);
 

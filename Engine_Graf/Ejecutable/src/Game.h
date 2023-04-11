@@ -2,13 +2,14 @@
 #define GAME_H
 
 #include "BaseGame.h"
-
-#include "Sprite.h"
+#include "Player.h"
 
 class Game : public BaseGame
 {
 private:
-	Entity2d* _staticSprite;
+	Player* _player;
+
+	Sprite* _staticSprite;
 
 public:
 	Game();	
@@ -17,7 +18,9 @@ public:
 	void input();
 	void update();
 	void draw();
-	void deinit();	
+	void deinit();
+
+	void ChangeCameraStyleInput();
 };
 
 #endif

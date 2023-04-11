@@ -50,6 +50,11 @@ DllExport void Entity::addFront(vec3 value)
 	_front += value;
 }
 
+DllExport void Entity::subtractPosition(vec3 value)
+{
+	_position -= value;
+}
+
 DllExport void Entity::setPosition(glm::vec3 newPosition)
 {
 	_position = newPosition;	
@@ -63,6 +68,16 @@ DllExport void Entity::setRotation(glm::vec3 newRotation)
 DllExport void Entity::setScale(glm::vec3 newScale)
 {
 	_scale = newScale;	
+}
+
+DllExport void Entity::setRotationX(float newRotationX)
+{
+	_rotation.x = newRotationX;
+}
+
+DllExport void Entity::setRotationY(float newRotationY)
+{
+	_rotation.y = newRotationY;
 }
 
 DllExport void Entity::setRight(vec3 newRight)

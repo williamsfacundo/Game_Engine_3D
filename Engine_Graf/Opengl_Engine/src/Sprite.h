@@ -25,7 +25,7 @@ public:
 
 	DllExport void setTexture(std::string imageName);
 
-	DllExport void drawTexture();
+	DllExport void drawSprite();
 };
 
 #endif
