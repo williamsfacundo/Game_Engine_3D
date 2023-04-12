@@ -1,10 +1,10 @@
 #ifndef GAME_H
 #define GAME_H
 
-#include "BaseGame.h"
+#include "Engine.h"
 #include "Player.h"
 
-class Game : public BaseGame
+class Game : public Engine
 {
 private:
 	Player* _player;

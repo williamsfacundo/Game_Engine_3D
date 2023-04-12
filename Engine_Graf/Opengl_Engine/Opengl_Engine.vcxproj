@@ -160,7 +160,7 @@
   <ItemGroup>
     <ClCompile Include="src\Camera.cpp" />
     <ClCompile Include="src\MyAssert.cpp" />
-    <ClCompile Include="src\BaseGame.cpp" />
+    <ClCompile Include="src\Engine.cpp" />
     <ClCompile Include="src\CollisionManager.cpp" />
     <ClCompile Include="src\Entity.cpp" />
     <ClCompile Include="src\Entity2d.cpp" />
@@ -185,7 +185,7 @@
     <ClInclude Include="src\Camera.h" />
     <ClInclude Include="src\MoveTypeEnum.h" />
     <ClInclude Include="src\MyAssert.h" />
-    <ClInclude Include="src\BaseGame.h" />
+    <ClInclude Include="src\Engine.h" />
     <ClInclude Include="src\CollisionManager.h" />
     <ClInclude Include="src\DDLExport.h" />
     <ClInclude Include="src\Entity.h" />

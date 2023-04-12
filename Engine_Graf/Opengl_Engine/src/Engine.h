@@ -1,5 +1,5 @@
-#ifndef BASE_GAME_H
-#define BASE_GAME_H
+#ifndef ENGINE_H
+#define ENGINE_H
 
 #include "Renderer.h"
 #include "window.h"
@@ -7,7 +7,7 @@
 #include "Input.h"
 #include "Camera.h"
 
-class BaseGame
+class Engine
 {
 private:
 	Window* _window;
@@ -15,11 +15,13 @@ private:
 	Timer* _timer;
 	Camera* _camera;
 
+	DllExport void setOpenGL();
 	DllExport void setBaseGameClases();
 
 protected:	
-	DllExport BaseGame();
-	DllExport ~BaseGame();
+	DllExport Engine();
+
+	DllExport ~Engine();
 
 public:	
 	DllExport void runEngine();

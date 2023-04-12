@@ -1,6 +1,6 @@
-#include "baseGame.h"
+#include "Engine.h"
 
-DllExport BaseGame::BaseGame()
+DllExport Engine::Engine()
 {	
 	_window = NULL;
 	_renderer = NULL;	
@@ -8,7 +8,7 @@ DllExport BaseGame::BaseGame()
 	_camera = NULL;
 }
 
-DllExport BaseGame::~BaseGame()
+DllExport Engine::~Engine()
 {
 	if (_window != NULL) { delete _window; }
 	if (_renderer != NULL) { delete _renderer; }	
@@ -16,7 +16,7 @@ DllExport BaseGame::~BaseGame()
 	if (_camera != NULL) { delete _camera; }
 }
 
-DllExport void BaseGame::setBaseGameClases()
+DllExport void Engine::setBaseGameClases()
 {
 	_window = Window::getWindow();
 	_renderer = Renderer::getRenderer();	
@@ -24,7 +24,7 @@ DllExport void BaseGame::setBaseGameClases()
 	_camera = Camera::getCamera();
 }
 
-DllExport void BaseGame::runEngine()
+DllExport void Engine::runEngine()
 {
 	setBaseGameClases();	
 	
@@ -54,7 +54,7 @@ DllExport void BaseGame::runEngine()
 	deinit();
 }
 
-DllExport float BaseGame::getDeltaTime()
+DllExport float Engine::getDeltaTime()
 {
 	return _timer->timeBetweenFrames();
 }

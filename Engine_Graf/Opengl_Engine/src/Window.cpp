@@ -7,7 +7,6 @@ DllExport Window::Window()
 	createWindow();
 }
 
-
 DllExport Window::~Window()
 {
 	glfwTerminate();
@@ -43,9 +42,9 @@ DllExport void Window::createWindow()
 
 	glfwMakeContextCurrent(_glfwWindow);
 
-	glfwSwapInterval(1);
-
-	initGlew();
+	glfwSwapInterval(1);	
+		
+	initGlew();	
 }
 
 DllExport Window* Window::getWindow()

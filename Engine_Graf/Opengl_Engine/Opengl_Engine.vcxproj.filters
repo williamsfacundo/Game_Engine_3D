@@ -30,7 +30,7 @@
     <ClCompile Include="src\vendor\imgui\imgui_impl_glfw_gl3.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="src\BaseGame.cpp">
+    <ClCompile Include="src\Engine.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="src\CollisionManager.cpp">
@@ -110,7 +110,7 @@
     <ClInclude Include="src\vendor\ShaderType.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="src\BaseGame.h">
+    <ClInclude Include="src\Engine.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="src\CollisionManager.h">
