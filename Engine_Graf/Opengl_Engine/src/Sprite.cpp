@@ -1,6 +1,6 @@
 #include "Sprite.h"
 
-Sprite::Sprite(std::string imageName) : Entity2d()
+Sprite::Sprite(std::string imageName) : Entity3d()
 {	
 	initSprite();
 

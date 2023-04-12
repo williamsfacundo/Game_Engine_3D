@@ -162,7 +162,7 @@
     <ClCompile Include="src\MyAssert.cpp" />
     <ClCompile Include="src\Engine.cpp" />
     <ClCompile Include="src\Entity.cpp" />
-    <ClCompile Include="src\Entity2d.cpp" />
+    <ClCompile Include="src\Entity3d.cpp" />
     <ClCompile Include="src\IndexBuffer.cpp" />
     <ClCompile Include="src\Input.cpp" />
     <ClCompile Include="src\RectangleShape.cpp" />
@@ -187,7 +187,7 @@
     <ClInclude Include="src\Engine.h" />
     <ClInclude Include="src\DDLExport.h" />
     <ClInclude Include="src\Entity.h" />
-    <ClInclude Include="src\Entity2d.h" />
+    <ClInclude Include="src\Entity3d.h" />
     <ClInclude Include="src\IndexBuffer.h" />
     <ClInclude Include="src\Input.h" />
     <ClInclude Include="src\RectangleShape.h" />

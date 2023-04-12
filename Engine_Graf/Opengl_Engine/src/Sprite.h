@@ -1,10 +1,10 @@
 #ifndef SPRITE_H
 #define SPRITE_H
 
-#include "Entity2d.h"
+#include "Entity3d.h"
 #include "Texture.h"
 
-class Sprite : public Entity2d
+class Sprite : public Entity3d
 {
 private:
 	Texture* _texture;

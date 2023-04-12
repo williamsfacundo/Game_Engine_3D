@@ -1,6 +1,6 @@
-#include "Entity2d.h"
+#include "Entity3d.h"
 
-DllExport Entity2d::Entity2d() : Entity()
+DllExport Entity3d::Entity3d() : Entity()
 {
 	_vertexArray = NULL;
 
@@ -31,7 +31,7 @@ DllExport Entity2d::Entity2d() : Entity()
 	_mvpMatrix = mat4();	
 }
 
-DllExport Entity2d::~Entity2d()
+DllExport Entity3d::~Entity3d()
 {
 	if(_vertexArray != NULL) { delete _vertexArray; }
 	if (_vertexBuffer != NULL) { delete _vertexBuffer; }
@@ -40,7 +40,7 @@ DllExport Entity2d::~Entity2d()
 	if (_shader != NULL) { delete _shader; }	
 }
 
-DllExport void Entity2d::updateModelMatrix()
+DllExport void Entity3d::updateModelMatrix()
 {
 	_translationMatrix = translate(mat4(1.0f), getPosition());
 
@@ -57,72 +57,72 @@ DllExport void Entity2d::updateModelMatrix()
 	_modelMatrix = _translationMatrix * _rotationMatrix * _scalingMatrix;
 }
 
-DllExport void Entity2d::updateMVPMatrix()
+DllExport void Entity3d::updateMVPMatrix()
 {
 	_mvpMatrix = Renderer::getRenderer()->getProjectionMatrix() * Camera::getCamera()->getView() * _modelMatrix;
 }
 
-void Entity2d::setVertexArray(VertexArray* vertexArray)
+void Entity3d::setVertexArray(VertexArray* vertexArray)
 {
 	_vertexArray = vertexArray;
 }
 
-void Entity2d::setVertexBuffer(VertexBuffer* vertexBuffer)
+void Entity3d::setVertexBuffer(VertexBuffer* vertexBuffer)
 {
 	_vertexBuffer = vertexBuffer;
 }
 
-void Entity2d::setVertexBufferLayout(VertexBufferLayout* vertexBufferLayout)
+void Entity3d::setVertexBufferLayout(VertexBufferLayout* vertexBufferLayout)
 {
 	_vertexBufferLayout = vertexBufferLayout;
 }
 
-void Entity2d::setIndexBuffer(IndexBuffer* indexBuffer)
+void Entity3d::setIndexBuffer(IndexBuffer* indexBuffer)
 {
 	_indexBuffer = indexBuffer;
 }
 
-void Entity2d::setShader(Shader* shader)
+void Entity3d::setShader(Shader* shader)
 {
 	_shader = shader;
 }
 
-void Entity2d::setShaderType(ShaderType shaderType)
+void Entity3d::setShaderType(ShaderType shaderType)
 {
 	_shaderType = shaderType;
 }
 
-VertexArray* Entity2d::getVertexArray()
+VertexArray* Entity3d::getVertexArray()
 {
 	return _vertexArray;
 }
 
-VertexBuffer* Entity2d::getVertexBuffer()
+VertexBuffer* Entity3d::getVertexBuffer()
 {
 	return _vertexBuffer;
 }
 
-VertexBufferLayout* Entity2d::getVertexBufferLayout()
+VertexBufferLayout* Entity3d::getVertexBufferLayout()
 {
 	return _vertexBufferLayout;
 }
 
-IndexBuffer* Entity2d::getIndexBuffer()
+IndexBuffer* Entity3d::getIndexBuffer()
 {
 	return _indexBuffer;
 }
 
-Shader* Entity2d::getShader()
+Shader* Entity3d::getShader()
 {
 	return _shader;
 }
 
-ShaderType Entity2d::getShaderType()
+ShaderType Entity3d::getShaderType()
 {
 	return _shaderType;
 }
 
-DllExport void Entity2d::draw()
+DllExport void Entity3d::draw()
 {
 	updateModelMatrix();
 

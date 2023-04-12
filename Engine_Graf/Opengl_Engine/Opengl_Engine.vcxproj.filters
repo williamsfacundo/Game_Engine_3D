@@ -36,7 +36,7 @@
     <ClCompile Include="src\Entity.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="src\Entity2d.cpp">
+    <ClCompile Include="src\Entity3d.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="src\IndexBuffer.cpp">
@@ -116,7 +116,7 @@
     <ClInclude Include="src\Entity.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="src\Entity2d.h">
+    <ClInclude Include="src\Entity3d.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="src\IndexBuffer.h">

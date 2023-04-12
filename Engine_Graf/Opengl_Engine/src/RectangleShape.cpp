@@ -1,6 +1,6 @@
 #include "RectangleShape.h"
 
-DllExport RectangleShape::RectangleShape() : Entity2d()
+DllExport RectangleShape::RectangleShape() : Entity3d()
 {
 	setVertices();
 	setIndices();

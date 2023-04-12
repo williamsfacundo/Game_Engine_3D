@@ -1,9 +1,9 @@
 #ifndef RECTANGLE_SHAPE_H
 #define RECTANGLE_SHAPE_H
 
-#include "Entity2d.h"
+#include "Entity3d.h"
 
-class RectangleShape : public Entity2d
+class RectangleShape : public Entity3d
 {
 private:
     int _width; 

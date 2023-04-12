@@ -1,5 +1,5 @@
-#ifndef ENTITY2D_H
-#define ENTITY2D_H
+#ifndef ENTITY3D_H
+#define ENTITY3D_H
 
 #include"Entity.h"
 #include "VertexArray.h"
@@ -9,7 +9,7 @@
 #include "ShaderType.h"
 #include "Camera.h"
 
-class Entity2d : public Entity
+class Entity3d : public Entity
 {
 private:
 	VertexArray* _vertexArray;
@@ -35,7 +35,7 @@ private:
 	DllExport void updateMVPMatrix();
 
 protected:
-	DllExport Entity2d();
+	DllExport Entity3d();
 
 	DllExport virtual void setVertices() = 0;
 
@@ -55,7 +55,7 @@ protected:
 	Shader* getShader();
 	ShaderType getShaderType();
 public:
-	DllExport ~Entity2d();	
+	DllExport ~Entity3d();	
 
 	DllExport void draw();
 };
