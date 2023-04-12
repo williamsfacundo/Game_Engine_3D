@@ -165,7 +165,6 @@
     <ClCompile Include="src\Entity3d.cpp" />
     <ClCompile Include="src\IndexBuffer.cpp" />
     <ClCompile Include="src\Input.cpp" />
-    <ClCompile Include="src\RectangleShape.cpp" />
     <ClCompile Include="src\Renderer.cpp" />
     <ClCompile Include="src\Shader.cpp" />
     <ClCompile Include="src\Sprite.cpp" />
@@ -190,7 +189,6 @@
     <ClInclude Include="src\Entity3d.h" />
     <ClInclude Include="src\IndexBuffer.h" />
     <ClInclude Include="src\Input.h" />
-    <ClInclude Include="src\RectangleShape.h" />
     <ClInclude Include="src\Renderer.h" />
     <ClInclude Include="src\Shader.h" />
     <ClInclude Include="src\Sprite.h" />
