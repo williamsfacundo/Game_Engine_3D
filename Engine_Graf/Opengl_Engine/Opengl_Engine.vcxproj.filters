@@ -57,7 +57,7 @@
     <ClCompile Include="src\Texture.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="src\Timer.cpp">
+    <ClCompile Include="src\DeltaTime.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="src\VertexArray.cpp">
@@ -134,7 +134,7 @@
     <ClInclude Include="src\Texture.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="src\Timer.h">
+    <ClInclude Include="src\DeltaTime.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="src\VertexArray.h">

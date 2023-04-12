@@ -3,7 +3,7 @@
 
 #include "Sprite.h"
 #include "MoveTypeEnum.h"
-#include "Timer.h"
+#include "DeltaTime.h"
 
 class Player
 {
@@ -12,7 +12,7 @@ private:
 
 	Sprite* _playerSprite;
 
-	Timer* _timer;
+	DeltaTime* _timer;
 
 	MoveTypeEnum _depthMovement;
 	MoveTypeEnum _sidewaysMovement;

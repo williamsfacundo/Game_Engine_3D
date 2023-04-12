@@ -4,7 +4,7 @@ Player::Player()
 {
 	_playerSprite = new Sprite("Logo.jpg");
 
-	_timer = Timer::getTimer();
+	_timer = DeltaTime::getTimer();
 
 	_depthMovement = MoveTypeEnum::NONE;
 

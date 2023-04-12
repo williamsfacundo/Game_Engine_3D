@@ -1,24 +1,24 @@
-#ifndef TIMER_H
-#define TIMER_H
+#ifndef DELTA_TIME_H
+#define DELTA_TIME_H
 
 #include "glfw3.h"
 
 #include "DDLExport.h"
 
-class Timer
+class DeltaTime
 {
 private:
-	static Timer* _timer;
-	
+	static DeltaTime* _timer;
+
 	double _deltaTime;
 	double _oldTime;
 
-	DllExport Timer();
+	DllExport DeltaTime();
 
 public:
-	DllExport ~Timer();
+	DllExport ~DeltaTime();
 
-	DllExport static Timer* getTimer();
+	DllExport static DeltaTime* getTimer();
 
 	DllExport double timeBetweenFrames();
 

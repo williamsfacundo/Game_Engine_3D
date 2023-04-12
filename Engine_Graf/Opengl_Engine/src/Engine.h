@@ -3,7 +3,7 @@
 
 #include "Renderer.h"
 #include "window.h"
-#include "Timer.h"
+#include "DeltaTime.h"
 #include "Input.h"
 #include "Camera.h"
 
@@ -12,10 +12,9 @@ class Engine
 private:
 	Window* _window;
 	Renderer* _renderer;	
-	Timer* _timer;
+	DeltaTime* _timer;
 	Camera* _camera;
-
-	DllExport void setOpenGL();
+	
 	DllExport void setBaseGameClases();
 
 protected:	

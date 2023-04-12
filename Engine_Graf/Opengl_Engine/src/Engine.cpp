@@ -20,7 +20,7 @@ DllExport void Engine::setBaseGameClases()
 {
 	_window = Window::getWindow();
 	_renderer = Renderer::getRenderer();	
-	_timer = Timer::getTimer();
+	_timer = DeltaTime::getTimer();
 	_camera = Camera::getCamera();
 }
 
